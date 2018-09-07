@@ -46,7 +46,13 @@ default: &default
 * Deployment instructions
 
 ```
-$ docker-compose up
+$ docker-compose up -d
+```
+
+Unknown database 'app_name_development'が表示された場合はデータベースを作成する
+
+```
+$ docker-compose run web rake db:create
 ```
 
 * ...
