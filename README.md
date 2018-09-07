@@ -14,7 +14,7 @@ Things you may want to cover:
 Gemfileの変更
 
 ```
-gem 'therubyracer', platforms: :ruby
+gem 'mini_racer', platforms: :ruby
 ```
 
 ```
