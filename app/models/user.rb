@@ -8,5 +8,5 @@ class User < ApplicationRecord
 
   # before_create :build_userinfo
   accepts_nested_attributes_for :userinfo, update_only: true
-  accepts_nested_attributes_for :userinfo, update_only: true
+  # accepts_nested_attributes_for :question, update_only: true
 end
