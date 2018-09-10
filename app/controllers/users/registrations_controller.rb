@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+  before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
   def new
     # super
-    # @user = User.new
+    @user = User.new
   end
 
   # POST /resource
@@ -45,7 +45,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up) do |params|
-      params.permit(:email, :password, :password_confirmation, :current_password,
+      params.permit(:email, :password, :password_confirmation, :current_password, :name, :site_id, :profile, :profile, :image, :image_cache,
                     userinfo_attributes: [:user_id, :name, :site_id, :profile, :image, :image_cache])
     end
   end
@@ -53,7 +53,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
     devise_parameter_sanitizer.permit(:account_update) do |params|
-      params.permit(:email, :password, :password_confirmation, :current_password,
+      params.permit(:email, :password, :password_confirmation, :current_password, :name, :site_id, :profile, :profile, :image, :image_cache,
                     userinfo_attributes: [:user_id, :name, :site_id, :profile, :image, :image_cache])
     end
   end

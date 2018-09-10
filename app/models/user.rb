@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
   has_one :userinfo, dependent: :destroy, inverse_of: :user
   has_many :questions, dependent: :destroy, inverse_of: :user
+  mount_uploader :image, ImageUploader
 
   # before_create :build_userinfo
   accepts_nested_attributes_for :userinfo, update_only: true
