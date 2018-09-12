@@ -1,0 +1,15 @@
+<% if current_user %>
+<p>
+  <%= link_to "ブログ記事の作成", :new_message %>
+</p>
+<% end %>
+
+<% if @messages.present? %>
+  <% @messages.each do |item| %>
+    <p><%= truncate(item.message_text, length: 80) %>
+      <%= link_to "もっと読む", item %></p>
+  <% end %>
+  <%#= will_paginate @messages %>
+<% else %>
+  <p>記事がありません。</p>
+<% end %>
