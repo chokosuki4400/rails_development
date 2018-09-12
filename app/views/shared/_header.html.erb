@@ -1,0 +1,71 @@
+<header class="p-header">
+	<div class="p-header__inner">
+		<div class="p-header__logo">
+			<%= link_to "ホメトーク", root_path %>
+		</div>
+
+		<div class="p-header__menu__btn c-humberger">
+			<i class="fa fa-th-list" aria-hidden="true"></i>
+			<!-- <i class="fa fa-times" aria-hidden="true"></i> -->
+		</div>
+
+		<div class="p-header__menu">
+			<ul class="p-header__list c-flex">
+				<li class="p-header__item">
+					<%= link_to "このサイトについて", about_path %>
+				</li>
+				<li class="p-header__item">
+					<%= link_to "一覧", entries_path %>
+				</li>
+				<%if user_signed_in? %>
+				<li class="p-header__item">
+					<%= link_to "ホメトークを作る", :new_entry %>
+				</li>
+				<!-- サインイン状態 -->
+				<%#= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+				<li class="p-header__item">
+					<%= link_to "マイページ", users_path %>
+				</li>
+				<% else %>
+				<!-- サインアウト状態 -->
+				<li class="p-header__item">
+					<%= link_to "ホメトークを作る", user_twitter_omniauth_authorize_path %>
+					<%#= link_to "ホメトークを作る", :new_entry %>
+				</li>
+				<li class="p-header__item">
+					<%= link_to "Twitterでログイン", user_twitter_omniauth_authorize_path %>
+				</li>
+				<!-- <li><%#= link_to "Twitterでログイン", new_user_session_path %></li> -->
+				<% end %>
+			</ul>
+		</div>
+	</div>
+</header>
+
+
+
+<%if user_signed_in? %>
+<% else %>
+<div class="p-sign">
+	<div class="p-sign__btn">
+		<%= link_to user_twitter_omniauth_authorize_path do %>
+		<i class="fa fa-twitter" aria-hidden="true"></i>Twitterで登録・ログイン
+		<% end %>
+	</div>
+</div>
+<% end %>
+
+<div class="p-add">
+	<div class="p-add__inner">
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- スマホ用 -->
+		<ins class="adsbygoogle"
+		style="display:block"
+		data-ad-client="ca-pub-1016214782584645"
+		data-ad-slot="3599600755"
+		data-ad-format="auto"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+</div>

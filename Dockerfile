@@ -10,4 +10,3 @@ ENV APP_HOME /app_name
 RUN mkdir -p $APP_HOME
 WORKDIR $APP_HOME
 ADD . $APP_HOME
-

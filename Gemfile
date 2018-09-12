@@ -39,6 +39,9 @@ gem 'devise'
 # 環境変数設定
 gem 'dotenv-rails'
 
+# 画像アップロード
+gem 'carrierwave'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
