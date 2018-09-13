@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     # member { patch "like", "unlike" }
     # collection { get "voted" }
     # collection { get "search" }
-    # resources :questions, only: [:index]
+    resources :messages, only: [:index,:show]
   end
 
   resources :messages

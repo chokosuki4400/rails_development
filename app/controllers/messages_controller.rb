@@ -2,12 +2,25 @@ class MessagesController < ApplicationController
 
   # 記事一覧
   def index
-    @messages = Message.all
+    if params[:tag]
+      # tagのハッシュがあった時
+      # tagged_withでタグ「:tag」でタグごとにフィルター
+      @messages = Message.tagged_with(params[:tag])
+    elsif params[:user_id]
+      # user_idのハッシュがあった時
+      @user = User.find(params[:user_id])
+      @messages = @user.messages
+    else
+      @messages = Message.all
+    end
+    @messages = @messages.readable_for(current_user)
+    # .order(posted_at: :desc).paginate(page: params[:page], per_page: 20)
   end
 
   # 記事の詳細
   def show
     @message = Message.find(params[:id])
+    # @message = Message.readable_for(current_user).find(params[:id])
   end
 
   # 新規登録フォーム
