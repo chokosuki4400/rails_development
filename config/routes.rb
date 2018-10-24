@@ -13,10 +13,11 @@ Rails.application.routes.draw do
     # member { patch "like", "unlike" }
     # collection { get "voted" }
     # collection { get "search" }
-    # resources :questions, only: [:index]
+    # resources :messages, only: [:index,:show]
+    resources :messages
   end
 
-  # resources :entries
+  # resources :messages
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

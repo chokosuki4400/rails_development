@@ -1,0 +1,21 @@
+<article class="p-article c-talk--right">
+
+	<div class="c-talk__text">
+		<h1 class="c-talk__balloon"><%= @message.message_text %></h1>
+	</div>
+	<% if current_user == @message.author %>
+	<ul class="p-article__bottom c-text--midium">
+		<li>
+			<%= link_to "編集", edit_user_message_path(@user, @message) %>
+		</li>
+	</ul>
+	<% end %>
+</article>
+
+
+<% if @message.message_text? %>
+<div class="p-article__detail">
+	<div class="p-article__detail__ttl">ホメエピソード</div>
+	<%= simple_format(@message.message_text, :class => "p-article__detail__text") %>
+</div>
+<% end %>
