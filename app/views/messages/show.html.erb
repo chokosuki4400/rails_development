@@ -17,5 +17,11 @@
 <div class="p-article__detail">
 	<div class="p-article__detail__ttl">ホメエピソード</div>
 	<%= simple_format(@message.message_text, :class => "p-article__detail__text") %>
+	<%if @message.answer_text.blank? %>
+	<p>回答がありません。</p>
+	<% else %>
+	<p><%= @message.answer_text %></p>
+	<p>回答があります。</p>
+	<% end %>
 </div>
 <% end %>
