@@ -1,0 +1,26 @@
+<div class="p-user">
+	<div class="c-box p-user__item">
+		<h2 class="c-headline"><%=current_user.name%>さんのマイページ</h2>
+		<%if user_signed_in? %>
+		<div class="c-img--circle" style="background-image: url(<%= current_user.image %>)"></div>
+
+		<%#=current_user.name%>
+		<%#= current_user.nickname %>
+
+		<div class="c-button">
+			<%= link_to "投稿一覧", [current_user, :messages] %>
+		</div>
+
+		<div class="c-button--disable">
+			<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+		</div>
+
+			<%# if current_user.admin_flg %>
+			<!-- 管理者のフラグが「true」の時、管理画面へのリンクを表示 -->
+			<div class="c-button">
+				<%#= link_to "管理画面",rails_admin.dashboard_path %>
+			</div>
+			<%#end%>
+		<%end%>
+	</div>
+</div>

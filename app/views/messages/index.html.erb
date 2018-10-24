@@ -1,13 +1,15 @@
-<% if current_user %>
+<%# if current_user %>
 <p>
-  <%= link_to "ブログ記事の作成", :new_message %>
+  <%= link_to "質問の作成", :new_user_message %>
 </p>
-<% end %>
+<%# end %>
 
 <% if @messages.present? %>
-  <% @messages.each do |item| %>
-    <p><%= truncate(item.message_text, length: 80) %>
-      <%= link_to "もっと読む", item %></p>
+  <% @messages.each do |message| %>
+    <p><%= truncate(message.message_text, length: 80) %><br>
+      <%= link_to "もっと読む", user_message_path(@user, message) %>
+      <%#= link_to message.id, user_message_path(@messages, message) %>
+    </p>
   <% end %>
   <%#= will_paginate @messages %>
 <% else %>

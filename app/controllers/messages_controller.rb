@@ -11,6 +11,7 @@ class MessagesController < ApplicationController
       @user = User.find(params[:user_id])
       @messages = @user.messages
     else
+      @user = User.where(:id => params[:user_id]).first
       @messages = Message.all
     end
     @messages = @messages.readable_for(current_user)
@@ -19,25 +20,33 @@ class MessagesController < ApplicationController
 
   # 記事の詳細
   def show
-    @message = Message.find(params[:id])
-    # @message = Message.readable_for(current_user).find(params[:id])
+    # @message = Message.find(params[:id])
+    @user = User.where(:id => params[:user_id]).first
+    @message = Message.readable_for(current_user).find(params[:id])
   end
 
   # 新規登録フォーム
   def new
+    @user = User.find(params[:user_id])
     @message = Message.new
   end
 
   # 編集
   def edit
+    @user = User.find(params[:user_id])
     @message = current_user.messages.find(params[:id])
   end
 
   def create
     @message = Message.new(message_params)
-    @message.author = current_user
+    if user_signed_in?
+      # ユーザーがサインイン済かどうかを判定する
+      @message.author = current_user
+    else
+      @message.author = User.where(:id => params[:user_id]).first
+    end
     if @message.save
-      redirect_to @message, notice: "記事を作成しました。"
+      redirect_to controller: :messages, action: :index
     else
       render "new"
     end
@@ -47,7 +56,7 @@ class MessagesController < ApplicationController
     @message = current_user.messages.find(params[:id])
     @message.assign_attributes(message_params)
     if @message.save
-      redirect_to @message, notice: "記事を更新しました。"
+      redirect_to controller: :messages, action: :index
     else
       render "edit"
     end
