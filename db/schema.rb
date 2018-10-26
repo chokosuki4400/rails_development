@@ -16,6 +16,9 @@ ActiveRecord::Schema.define(version: 2018_09_12_063302) do
     t.bigint "user_id", null: false
     t.text "message_text", null: false
     t.text "answer_text"
+    t.text "music_url"
+    t.text "customer_ip"
+    t.boolean "twitter_flag", default: false, null: false
     t.boolean "status", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
