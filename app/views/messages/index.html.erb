@@ -5,14 +5,21 @@
 <%# end %>
 
 <% if @messages.present? %>
-<% @messages.each do |message| %>
-<p><%= truncate(message.message_text, length: 80) %><br>
-  <%if message.answer_text.blank? %>
-  <p>回答がありません。</p>
-  <% else %>
-  <p><%= message.answer_text %></p>
-  <p>回答があります。</p>
-  <% end %>
+  <% @messages.each do |message| %>
+    <p><%= truncate(message.message_text, length: 80) %><br>
+    <%if message.answer_text.blank? %>
+      <p>質問の回答がありません。</p>
+    <% else %>
+      <p><%= message.answer_text %></p>
+      <p>質問の回答があります。</p>
+    <% end %>
+
+    <%if message.music_url.blank? %>
+      <p>音源の回答がありません。</p>
+    <% else %>
+      <p><a href="<%= message.music_url %>" target="_blank"><%= message.music_url %></a></p>
+      <p>音源の回答があります。</p>
+    <% end %>
 
   <%= link_to "もっと読む", user_message_path(@user, message) %>
   <%#= link_to message.id, user_message_path(@messages, message) %>
