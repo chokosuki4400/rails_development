@@ -45,6 +45,10 @@ class MessagesController < ApplicationController
     else
       @message.author = User.where(:id => params[:user_id]).first
     end
+
+    # ipを保存
+    @message.customer_ip = request.remote_ip
+
     if @message.save
       redirect_to controller: :messages, action: :index
     else
@@ -70,7 +74,7 @@ class MessagesController < ApplicationController
 
   private
   def message_params
-    params.require(:message).permit(:message_text, :answer_text, :status)
+    params.require(:message).permit(:message_text, :answer_text, :music_url, :status)
   end
 
 end
