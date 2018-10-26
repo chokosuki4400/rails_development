@@ -14,8 +14,11 @@ ActiveRecord::Schema.define(version: 2018_09_12_063302) do
 
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.bigint "user_id", null: false
+    t.string "customer_ip"
     t.text "message_text", null: false
     t.text "answer_text"
+    t.text "music_url"
+    t.boolean "twitter_flag", default: false, null: false
     t.boolean "status", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
