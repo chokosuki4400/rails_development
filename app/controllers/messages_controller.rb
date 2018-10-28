@@ -74,7 +74,7 @@ class MessagesController < ApplicationController
 
   private
   def message_params
-    params.require(:message).permit(:message_text, :answer_text, :music_url, :status)
+    params.require(:message).permit(:message_text, :answer_text, :music_url, :status, :twitter_flag)
   end
 
 end
