@@ -14,7 +14,7 @@ class MessagesController < ApplicationController
       @user = User.where(:id => params[:user_id]).first
       @messages = Message.all
     end
-    @messages = @messages.readable_for(current_user)
+    # @messages = @messages.readable_for(current_user)
     # .order(posted_at: :desc).paginate(page: params[:page], per_page: 20)
   end
 
@@ -22,7 +22,7 @@ class MessagesController < ApplicationController
   def show
     # @message = Message.find(params[:id])
     @user = User.where(:id => params[:user_id]).first
-    @message = Message.readable_for(current_user).find(params[:id])
+    @message = Message.readable_for(@user).find(params[:id])
   end
 
   # 新規登録フォーム
@@ -39,12 +39,13 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
-    if user_signed_in?
-      # ユーザーがサインイン済かどうかを判定する
-      @message.author = current_user
-    else
-      @message.author = User.where(:id => params[:user_id]).first
-    end
+    @message.author = User.where(:id => params[:user_id]).first
+    # if user_signed_in?
+    #   # ユーザーがサインイン済かどうかを判定する
+    #   @message.author = current_user
+    # else
+    #   @message.author = User.where(:id => params[:user_id]).first
+    # end
 
     # ipを保存
     @message.customer_ip = request.remote_ip
