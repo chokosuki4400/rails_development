@@ -1,0 +1,9 @@
+<h2>ログイン</h2>
+<p>Find me in app/views/logins/login.html.erb</p>
+
+<%= link_to (user_twitter_omniauth_authorize_path),class:'twitter-login loginbutton' do %>
+<i class="fab fa-twitter"></i> twitterで登録・ログイン
+<% end %>
+
+<%= link_to 'メールアドレスでログイン', new_user_session_path,class:'email-login loginbutton' %>
+

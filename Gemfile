@@ -33,11 +33,13 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# ログイン機能
-gem 'devise'
-
 # 環境変数設定
 gem 'dotenv-rails'
+
+# ログイン機能
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-twitter'
 
 # 画像アップロード
 gem 'carrierwave'

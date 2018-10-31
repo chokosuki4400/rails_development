@@ -319,7 +319,6 @@ common
  .p-header {
   width: 100%;
   margin: 0 auto;
-  overflow: hidden;
   text-align: center;
   background: #ffffff;
   // height: 50px;
@@ -365,7 +364,7 @@ common
 }
 
 .p-header__menu {
-  display: none;
+  // display: none;
 }
 
 .p-header__menu__btn {
