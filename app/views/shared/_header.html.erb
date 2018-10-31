@@ -11,22 +11,12 @@
 
 		<div class="p-header__menu">
 			<ul class="p-header__list c-flex">
-				<li class="p-header__item">
-					<%= link_to "このサイトについて", about_path %>
-				</li>
-				<li class="p-header__item">
-					<%= link_to "一覧", entries_path %>
-				</li>
-				<%if user_signed_in? %>
-				<li class="p-header__item">
-					<%= link_to "ホメトークを作る", :new_entry %>
-				</li>
 				<!-- サインイン状態 -->
 				<%#= link_to "ログアウト", destroy_user_session_path, method: :delete %>
 				<li class="p-header__item">
 					<%= link_to "マイページ", users_path %>
 				</li>
-				<% else %>
+
 				<!-- サインアウト状態 -->
 				<li class="p-header__item">
 					<%= link_to "ホメトークを作る", user_twitter_omniauth_authorize_path %>
@@ -36,7 +26,6 @@
 					<%= link_to "Twitterでログイン", user_twitter_omniauth_authorize_path %>
 				</li>
 				<!-- <li><%#= link_to "Twitterでログイン", new_user_session_path %></li> -->
-				<% end %>
 			</ul>
 		</div>
 	</div>

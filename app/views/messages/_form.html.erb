@@ -14,9 +14,9 @@
     <th><%= form.label :music_url %></th>
     <td><%= form.text_area :music_url, rows: 10, cols: 45 %></td>
   </tr>
-  <% end %>
   <tr>
-    <th><%#= form.label :status %></th>
-    <td><%#= form.select :status, Message.status_options %></td>
+    <th><%= form.check_box :twitter_flag, :as => :boolean%></th>
+    <td><%= form.label :twitter_flag %></td>
   </tr>
+  <% end %>
 </table>

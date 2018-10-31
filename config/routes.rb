@@ -1,10 +1,23 @@
 Rails.application.routes.draw do
 
+  get 'logins/login'
+  get 'logins/sign_up'
+  # get 'home/index'
+
   devise_for :users, controllers: {
     sessions:      'users/sessions',
     passwords:     'users/passwords',
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
+
+  devise_scope :user do
+    get "sign_in", :to => "users/sessions#new"
+    get "sign_up", :to => "users/registrations#new"
+    get "users/sign_out", :to => "users/sessions#destroy"
+  end
+
+  root 'home#index'
 
   resources :users do
     # @like 「いいね」した時に「votes」テーブルにレコードを作成
