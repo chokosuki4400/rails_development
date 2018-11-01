@@ -41,6 +41,9 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter'
 
+# twitterに投稿
+gem 'twitter'
+
 # 画像アップロード
 gem 'carrierwave'
 
