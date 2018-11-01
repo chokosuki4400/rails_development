@@ -62,7 +62,7 @@ class MessagesController < ApplicationController
     @message = current_user.messages.find(params[:id])
     @message.assign_attributes(message_params)
     if @message.save
-      @twitter.update("テスト1\nブログのためテストしています。(後で消します)")
+      @twitter.update("#{@message.answer_text}\r#{@message.music_url}")
       redirect_to controller: :messages, action: :index
     else
       render "edit"
