@@ -18,6 +18,8 @@ class User < ApplicationRecord
       user.name = auth["info"]["name"]
       user.nickname = auth["info"]["nickname"]
       user.email = User.dummy_email(auth)
+      user.consumer_key = auth.extra.access_token.consumer.key
+      user.consumer_secret = auth.extra.access_token.consumer.secret
       user.access_token = auth["credentials"]["token"]
       user.access_token_secret = auth["credentials"]["secret"]
       user.image = auth["info"]["image"]

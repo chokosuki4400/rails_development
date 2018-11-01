@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 2018_09_12_063302) do
     t.datetime "updated_at", null: false
     t.string "uid"
     t.string "provider"
+    t.string "consumer_key"
+    t.string "consumer_secret"
     t.string "access_token"
     t.string "access_token_secret"
     t.string "name"

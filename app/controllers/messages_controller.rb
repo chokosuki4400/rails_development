@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  before_action :set_twitter_client
 
   # 記事一覧
   def index
@@ -61,6 +62,10 @@ class MessagesController < ApplicationController
     @message = current_user.messages.find(params[:id])
     @message.assign_attributes(message_params)
     if @message.save
+      #flagが立った時、ツイートする
+      if @message.twitter_flag
+        @twitter.update("#{@message.answer_text}\r#{@message.music_url}")
+      end
       redirect_to controller: :messages, action: :index
     else
       render "edit"
@@ -74,8 +79,19 @@ class MessagesController < ApplicationController
   end
 
   private
+
   def message_params
     params.require(:message).permit(:message_text, :answer_text, :music_url, :status, :twitter_flag)
+  end
+
+  def set_twitter_client
+    @user = User.where(:id => params[:user_id]).first
+    @twitter = Twitter::REST::Client.new do |config|
+      config.consumer_key        = @user.consumer_key
+      config.consumer_secret     = @user.consumer_secret
+      config.access_token        = @user.access_token
+      config.access_token_secret = @user.access_token_secret
+    end
   end
 
 end
