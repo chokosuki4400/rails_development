@@ -86,11 +86,13 @@ class MessagesController < ApplicationController
 
   def set_twitter_client
     @user = User.where(:id => params[:user_id]).first
-    @twitter = Twitter::REST::Client.new do |config|
-      config.consumer_key        = @user.consumer_key
-      config.consumer_secret     = @user.consumer_secret
-      config.access_token        = @user.access_token
-      config.access_token_secret = @user.access_token_secret
+    if @user.provider === "twitter"
+      @twitter = Twitter::REST::Client.new do |config|
+        config.consumer_key        = @user.consumer_key
+        config.consumer_secret     = @user.consumer_secret
+        config.access_token        = @user.access_token
+        config.access_token_secret = @user.access_token_secret
+      end
     end
   end
 
