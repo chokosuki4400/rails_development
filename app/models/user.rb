@@ -5,13 +5,16 @@ class User < ApplicationRecord
   :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable, omniauth_providers: [:twitter]
   has_one :userinfo, dependent: :destroy, inverse_of: :user
   has_many :messages, dependent: :destroy
-  mount_uploader :image, ImageUploader
+  # mount_uploader :image, ImageUploader
 
   # before_create :build_userinfo
   accepts_nested_attributes_for :userinfo, update_only: true
   # accepts_nested_attributes_for :question, update_only: true
 
   def self.from_omniauth(auth)
+    logger.debug('===========================')
+    logger.debug(auth["info"]["image"])
+    logger.debug(auth["info"]["description"])
     find_or_create_by(provider: auth["provider"], uid: auth["uid"]) do |user|
       user.provider = auth["provider"]
       user.uid = auth["uid"]
