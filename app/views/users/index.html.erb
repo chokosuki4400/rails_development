@@ -29,10 +29,6 @@
 				<td><%=current_user.nickname%></td>
 			</tr>
 			<tr>
-				<th>サイトID</th>
-				<td><%=current_user.site_id%></td>
-			</tr>
-			<tr>
 				<th>Profile</th>
 				<td><%=current_user.profile%></td>
 			</tr>
@@ -54,12 +50,12 @@
 			<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
 		</div>
 
-			<%# if current_user.admin_flg %>
-			<!-- 管理者のフラグが「true」の時、管理画面へのリンクを表示 -->
-			<div class="c-button">
-				<%#= link_to "管理画面",rails_admin.dashboard_path %>
-			</div>
-			<%#end%>
+		<%# if current_user.admin_flg %>
+		<!-- 管理者のフラグが「true」の時、管理画面へのリンクを表示 -->
+		<div class="c-button">
+			<%#= link_to "管理画面",rails_admin.dashboard_path %>
+		</div>
+		<%#end%>
 		<%end%>
 	</div>
 </div>

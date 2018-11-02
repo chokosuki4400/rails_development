@@ -18,13 +18,13 @@ td {
 </style>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+<%= devise_error_messages! %>
 
-  <table>
-    <tr>
-      <th><%= f.label :email %></th>
-      <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
-    </tr>
+<table>
+  <tr>
+    <th><%= f.label :email %></th>
+    <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+  </tr>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
   <tr>
@@ -57,26 +57,22 @@ td {
     <td><%= f.text_field :name %></td>
   </tr>
 
-<tr>
-<th><%= f.label :site_id %></th>
-<td><%= f.text_field :site_id %></td>
-</tr>
 
-<tr>
-<th><%= f.label :profile %></th>
-<td><%= f.text_area :profile %></td>
-</tr>
+  <tr>
+    <th><%= f.label :profile %></th>
+    <td><%= f.text_area :profile %></td>
+  </tr>
 
-<tr>
-  <th></th>
-  <td><%= f.file_field :image %></td>
-</tr>
+  <tr>
+    <th></th>
+    <td><%= f.file_field :image %></td>
+  </tr>
 
 </table>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
+<div class="actions">
+  <%= f.submit "Update" %>
+</div>
 <% end %>
 
 <h3>Cancel my account</h3>

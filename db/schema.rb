@@ -50,7 +50,6 @@ ActiveRecord::Schema.define(version: 2018_09_12_063302) do
     t.string "access_token_secret"
     t.string "name"
     t.string "nickname"
-    t.string "site_id"
     t.text "profile"
     t.string "image"
     t.index ["email"], name: "index_users_on_email", unique: true
