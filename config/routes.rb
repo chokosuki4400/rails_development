@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     # collection { get "voted" }
     # collection { get "search" }
     # resources :messages, only: [:index,:show]
-    resources :messages
+    resources :messages, param: :url_token
   end
 
   # resources :messages

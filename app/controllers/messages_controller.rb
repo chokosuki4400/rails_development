@@ -23,7 +23,8 @@ class MessagesController < ApplicationController
   def show
     # @message = Message.find(params[:id])
     @user = User.where(:id => params[:user_id]).first
-    @message = Message.readable_for(@user).find(params[:id])
+    # @message = Message.readable_for(@user).find(params[:id])
+    @message = Message.find_by(url_token: params[:url_token])
   end
 
   # 新規登録フォーム
@@ -35,7 +36,7 @@ class MessagesController < ApplicationController
   # 編集
   def edit
     @user = User.find(params[:user_id])
-    @message = current_user.messages.find(params[:id])
+    @message = current_user.messages.find_by(url_token: params[:url_token])
   end
 
   def create
@@ -59,7 +60,7 @@ class MessagesController < ApplicationController
   end
 
   def update
-    @message = current_user.messages.find(params[:id])
+    @message = current_user.messages.find_by(url_token: params[:url_token])
     @message.assign_attributes(message_params)
     if @message.save
       #flagが立った時、ツイートする
@@ -73,7 +74,7 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    @message = current_user.messages.find(params[:id])
+    @message = current_user.messages.find_by(url_token: params[:url_token])
     @message.destroy
     redirect_to :messages, notice: "記事を削除しました。"
   end
