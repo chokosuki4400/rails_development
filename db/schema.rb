@@ -14,8 +14,8 @@ ActiveRecord::Schema.define(version: 2018_09_12_063302) do
 
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "customer_ip"
     t.string "url_token", null: false
+    t.string "customer_ip"
     t.text "message_text", null: false
     t.text "answer_text"
     t.text "music_url"

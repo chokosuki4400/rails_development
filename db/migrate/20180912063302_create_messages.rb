@@ -2,8 +2,8 @@ class CreateMessages < ActiveRecord::Migration[5.2]
   def change
     create_table :messages do |t|
       t.references :user, null: false
+      t.string :url_token, null: false, unique: true
       t.string :customer_ip
-      t.string :url_token, null: false
       t.text :message_text, null: false
       t.text :answer_text
       t.text :music_url
