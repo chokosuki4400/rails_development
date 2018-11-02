@@ -47,6 +47,9 @@ gem 'twitter'
 # 画像アップロード
 gem 'carrierwave'
 
+# 日本語化
+gem 'rails-i18n'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

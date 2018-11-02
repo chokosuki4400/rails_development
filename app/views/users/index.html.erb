@@ -4,11 +4,50 @@
 		<%if user_signed_in? %>
 		<div class="c-img--circle" style="background-image: url(<%= current_user.image %>)"></div>
 
-		<%#=current_user.name%>
-		<%#= current_user.nickname %>
+		<style>
+		table {
+			width: 980px;
+			margin: auto;
+			font-size: 12px;
+		}
+		th {
+			font-weight: bold;
+			width: 10%;
+		}
+		td {
+			width: 90%;
+		}
+		</style>
+
+		<table>
+			<tr>
+				<th>表示名</th>
+				<td><%=current_user.name%></td>
+			</tr>
+			<tr>
+				<th>ニックネーム</th>
+				<td><%=current_user.nickname%></td>
+			</tr>
+			<tr>
+				<th>サイトID</th>
+				<td><%=current_user.site_id%></td>
+			</tr>
+			<tr>
+				<th>Profile</th>
+				<td><%=current_user.profile%></td>
+			</tr>
+			<tr>
+				<th>アバター</th>
+				<td><img src="<%=current_user.image%>" width="50" height="50" alt="" id="MainPhoto"></td>
+			</tr>
+		</table>
 
 		<div class="c-button">
 			<%= link_to "投稿一覧", [current_user, :messages] %>
+		</div>
+
+		<div class="c-button">
+			<%= link_to "編集", edit_user_registration_path %>
 		</div>
 
 		<div class="c-button--disable">
