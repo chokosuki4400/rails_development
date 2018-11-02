@@ -49,16 +49,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up) do |params|
-      params.permit(:email, :password, :password_confirmation, :current_password, :name, :site_id, :profile, :profile, :image, :image_cache,
-                    userinfo_attributes: [:user_id, :name, :site_id, :profile, :image, :image_cache])
+      params.permit(:email, :password, :password_confirmation, :current_password, :name, :nickname, :site_id, :profile, :image, :image_cache)
     end
   end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
     devise_parameter_sanitizer.permit(:account_update) do |params|
-      params.permit(:email, :password, :password_confirmation, :current_password, :name, :site_id, :profile, :profile, :image, :image_cache,
-                    userinfo_attributes: [:user_id, :name, :site_id, :profile, :image, :image_cache])
+      params.permit(:email, :password, :password_confirmation, :current_password, :name, :nickname, :site_id, :profile, :image, :image_cache)
     end
   end
 
