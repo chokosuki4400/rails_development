@@ -1,9 +1,7 @@
 class Message < ApplicationRecord
   belongs_to :author, class_name: "User", foreign_key: "user_id"
 
-  attribute :url_token, :string, default: SecureRandom.hex(10)
   validates :url_token, presence: true, uniqueness: true
-
 
   # 公開記事のみ
   scope :common, -> { where(status: 0) }
@@ -19,5 +17,4 @@ class Message < ApplicationRecord
   def to_param
     url_token
   end
-
 end

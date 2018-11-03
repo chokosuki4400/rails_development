@@ -52,6 +52,9 @@ class MessagesController < ApplicationController
     # ipを保存
     @message.customer_ip = request.remote_ip
 
+    # ハッシュを保存
+    @message.url_token = SecureRandom.hex(10)
+
     if @message.save
       redirect_to controller: :messages, action: :index
     else
@@ -82,7 +85,7 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:message_text, :answer_text, :music_url, :status, :twitter_flag)
+    params.require(:message).permit(:url_token, :customer_ip, :message_text, :answer_text, :music_url, :status, :twitter_flag)
   end
 
   def set_twitter_client
