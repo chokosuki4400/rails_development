@@ -3,14 +3,11 @@
 	<div class="c-talk__text">
 		<h1 class="c-talk__balloon"><%= @message.message_text %></h1>
 	</div>
+
 	<% if current_user == @message.author %>
 	<ul class="p-article__bottom c-text--midium">
 		<li>
-			<% logger.debug("このページは読み込まれています") %>
-			<% logger.debug(@message.inspect) %>
-			<% logger.debug(@message.url_token) %>
-			<% logger.debug("このページは読み込まれています") %>
-			<%= link_to "編集", edit_user_message_path(@user, @message) %>
+			<%= link_to "編集", edit_user_message_path(@user.monofy_id, @message) %>
 		</li>
 	</ul>
 	<% end %>

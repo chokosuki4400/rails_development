@@ -6,8 +6,8 @@ class AddImageToUser < ActiveRecord::Migration[5.2]
     add_column :users, :consumer_secret, :string
     add_column :users, :access_token, :string
     add_column :users, :access_token_secret, :string
-    add_column :users, :name, :string
-    add_column :users, :nickname, :string
+    add_column :users, :name, :string, null: false
+    add_column :users, :monofy_id, :string, null: false, unique: true
     add_column :users, :profile, :text
     add_column :users, :image, :string
   end
