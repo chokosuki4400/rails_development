@@ -23,10 +23,6 @@
       <p>音源の回答があります。</p>
     <% end %>
 
-    <% logger.debug("このページは読み込まれています") %>
-    <% logger.debug(message.inspect) %>
-    <% logger.debug("このページは読み込まれています") %>
-
   <%= link_to "もっと読む", user_message_path(@user.monofy_id, message) %>
   <%#= link_to message.id, user_message_path(@messages, message) %>
 </p>

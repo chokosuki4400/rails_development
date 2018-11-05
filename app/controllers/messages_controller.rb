@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  # before_action :set_twitter_client
+  before_action :set_twitter_client
 
   # 記事一覧
   def index
@@ -11,9 +11,6 @@ class MessagesController < ApplicationController
     else
       # @hoge = User.where(:id => params[:user_id]).first
       @user = User.find_by(monofy_id: params[:user_monofy_id])
-      logger.debug("====================")
-      logger.debug(@user)
-      logger.debug("====================")
       # @messages = Message.all
       @messages = @user.messages
     end
@@ -53,9 +50,6 @@ class MessagesController < ApplicationController
     # ハッシュを保存
     @message.url_token = SecureRandom.hex(10)
 
-    logger.debug("=================")
-    logger.debug(@message.inspect)
-    logger.debug("=================")
     if @message.save
       redirect_to controller: :messages, action: :index
     else
@@ -66,9 +60,6 @@ class MessagesController < ApplicationController
   def update
     @message = current_user.messages.find_by(url_token: params[:url_token])
     @message.assign_attributes(message_params)
-    logger.debug("update=================")
-    logger.debug(@message.inspect)
-    logger.debug("=================")
 
     if @message.save
       #flagが立った時、ツイートする
