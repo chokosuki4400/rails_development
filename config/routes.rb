@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  resources :users do
+  resources :users, param: :monofy_id do
     # @like 「いいね」した時に「votes」テーブルにレコードを作成
     # @unlike 自分の投票を削除
     # @voted 自分の投票の記事一覧を表示
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     # collection { get "voted" }
     # collection { get "search" }
     # resources :messages, only: [:index,:show]
-    resources :messages
+    resources :messages, param: :url_token
   end
 
   # resources :messages

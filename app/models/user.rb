@@ -13,7 +13,7 @@ class User < ApplicationRecord
       user.provider = auth["provider"]
       user.uid = auth["uid"]
       user.name = auth["info"]["name"]
-      user.nickname = auth["info"]["nickname"]
+      user.monofy_id = auth["info"]["nickname"]
       user.email = User.dummy_email(auth)
       user.consumer_key = auth.extra.access_token.consumer.key
       user.consumer_secret = auth.extra.access_token.consumer.secret

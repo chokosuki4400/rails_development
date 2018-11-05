@@ -1,6 +1,8 @@
 class Message < ApplicationRecord
   belongs_to :author, class_name: "User", foreign_key: "user_id"
 
+  validates :url_token, presence: true, uniqueness: true
+
   # 公開記事のみ
   scope :common, -> { where(status: 0) }
   # 下書き以外（公開・会員限定）
@@ -12,4 +14,7 @@ class Message < ApplicationRecord
   # ログインしていればfull、していなければcommon
   scope :readable_for, -> (user) { user ? full(user) : common }
 
+  def to_param
+    url_token
+  end
 end

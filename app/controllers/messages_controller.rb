@@ -3,17 +3,16 @@ class MessagesController < ApplicationController
 
   # 記事一覧
   def index
-    if params[:tag]
-      # tagのハッシュがあった時
-      # tagged_withでタグ「:tag」でタグごとにフィルター
-      @messages = Message.tagged_with(params[:tag])
-    elsif params[:user_id]
+    if params[:user_id]
       # user_idのハッシュがあった時
       @user = User.find(params[:user_id])
+      @user = User.find_by(monofy_id: params[:user_monofy_id])
       @messages = @user.messages
     else
-      @user = User.where(:id => params[:user_id]).first
-      @messages = Message.all
+      # @hoge = User.where(:id => params[:user_id]).first
+      @user = User.find_by(monofy_id: params[:user_monofy_id])
+      # @messages = Message.all
+      @messages = @user.messages
     end
     # @messages = @messages.readable_for(current_user)
     # .order(posted_at: :desc).paginate(page: params[:page], per_page: 20)
@@ -22,34 +21,34 @@ class MessagesController < ApplicationController
   # 記事の詳細
   def show
     # @message = Message.find(params[:id])
-    @user = User.where(:id => params[:user_id]).first
-    @message = Message.readable_for(@user).find(params[:id])
+    # @user = User.where(:id => params[:user_id]).first
+    @user = User.find_by(monofy_id: params[:user_monofy_id])
+    # @message = Message.readable_for(@user).find(params[:id])
+    @message = Message.find_by(url_token: params[:url_token])
   end
 
   # 新規登録フォーム
   def new
-    @user = User.find(params[:user_id])
+    @user = User.find_by(monofy_id: params[:user_monofy_id])
     @message = Message.new
   end
 
   # 編集
   def edit
-    @user = User.find(params[:user_id])
-    @message = current_user.messages.find(params[:id])
+    @user = User.find_by(monofy_id: params[:user_monofy_id])
+    @message = current_user.messages.find_by(url_token: params[:url_token])
   end
 
   def create
     @message = Message.new(message_params)
-    @message.author = User.where(:id => params[:user_id]).first
-    # if user_signed_in?
-    #   # ユーザーがサインイン済かどうかを判定する
-    #   @message.author = current_user
-    # else
-    #   @message.author = User.where(:id => params[:user_id]).first
-    # end
+    # @message.author = User.where(:id => params[:user_id]).first
+    @message.author = User.find_by(monofy_id: params[:user_monofy_id])
 
     # ipを保存
     @message.customer_ip = request.remote_ip
+
+    # ハッシュを保存
+    @message.url_token = SecureRandom.hex(10)
 
     if @message.save
       redirect_to controller: :messages, action: :index
@@ -59,8 +58,9 @@ class MessagesController < ApplicationController
   end
 
   def update
-    @message = current_user.messages.find(params[:id])
+    @message = current_user.messages.find_by(url_token: params[:url_token])
     @message.assign_attributes(message_params)
+
     if @message.save
       #flagが立った時、ツイートする
       if @message.twitter_flag
@@ -73,7 +73,7 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    @message = current_user.messages.find(params[:id])
+    @message = current_user.messages.find_by(url_token: params[:url_token])
     @message.destroy
     redirect_to :messages, notice: "記事を削除しました。"
   end
@@ -81,11 +81,12 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:message_text, :answer_text, :music_url, :status, :twitter_flag)
+    params.require(:message).permit(:monofy_id, :url_token, :customer_ip, :message_text, :answer_text, :music_url, :status, :twitter_flag)
   end
 
   def set_twitter_client
-    @user = User.where(:id => params[:user_id]).first
+    # @user = User.where(:id => params[:user_id]).first
+    @user = User.find_by(monofy_id: params[:user_monofy_id])
     if @user.provider === "twitter"
       @twitter = Twitter::REST::Client.new do |config|
         config.consumer_key        = @user.consumer_key

@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2018_09_12_063302) do
 
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
+    t.string "url_token", null: false
     t.string "customer_ip"
     t.text "message_text", null: false
     t.text "answer_text"
@@ -48,8 +49,8 @@ ActiveRecord::Schema.define(version: 2018_09_12_063302) do
     t.string "consumer_secret"
     t.string "access_token"
     t.string "access_token_secret"
-    t.string "name"
-    t.string "nickname"
+    t.string "name", null: false
+    t.string "monofy_id", null: false
     t.text "profile"
     t.string "image"
     t.index ["email"], name: "index_users_on_email", unique: true

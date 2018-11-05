@@ -16,7 +16,7 @@ images = ["https://c.okmusic.jp/news_items/images/252544/more_large.jpg?15210966
     :password => "password",
     :encrypted_password => "password",
     :name => "#{names[idx]}",
-    :nickname => "#{email[idx]}",
+    :monofy_id => "#{email[idx]}",
     :profile => "よくある#{names[idx]}です。",
     :image => "#{images[idx]}"
   )

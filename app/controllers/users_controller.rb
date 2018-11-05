@@ -7,7 +7,8 @@ class UsersController < ApplicationController
   end
 
   def show
-  	@user = User.find(params[:id])
+  	# @user = User.find(params[:id])
+  	@user = User.find_by(monofy_id: params[:monofy_id])
   	@messages = @user.messages
   end
 end
