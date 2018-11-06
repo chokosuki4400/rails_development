@@ -55,7 +55,6 @@ set :branch, 'master'
 set :deploy_to, '/var/www/monofy.net/monofy'
 
 set :pty, true
-set :scm, :git
 set :rbenv_type, :system
 
 # シンボリックリンクをはるファイル
@@ -69,7 +68,7 @@ set :keep_releases, 5
 
 # rubyのバージョン
 # rbenvで設定したサーバー側のrubyのバージョン
-set :rbenv_ruby, '2.2.8'
+set :rbenv_ruby, '2.5.1'
 
 # 出力するログのレベル。
 set :log_level, :debug
