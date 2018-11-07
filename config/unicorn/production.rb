@@ -24,6 +24,10 @@ pid $pid
 preload_app true
 
 #fork前に行うことを定義
+before_exec do |server|
+  ENV['BUNDLE_GEMFILE'] = "#{$app_dir}/Gemfile"
+end
+
 before_fork do |server, worker|
   defined?(ActiveRecord::Base) and ActiveRecord::Base.connection.disconnect!
   old_pid = "#{server.config[:pid]}.oldbin"
