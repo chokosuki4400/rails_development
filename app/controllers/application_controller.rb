@@ -1,8 +1,9 @@
-class ApplicationController < ActionController::Base
+# frozen_string_literal: true
 
+class ApplicationController < ActionController::Base
   # 未ログイン時、ログインページへリダイレクト
-	# before_action :authenticate_user!
-	# before_filter :authenticate_person!
+  # before_action :authenticate_user!
+  # before_filter :authenticate_person!
 
   # CSRF保護をオンにする以下の1行を有効にします。
   protect_from_forgery with: :exception
@@ -16,8 +17,8 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :password_confirmation, :current_password, :name, :monofy_id, :profile, :image, :image_cache])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:email, :password, :password_confirmation, :current_password, :name, :monofy_id, :profile, :image, :image_cache])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[email password password_confirmation current_password name monofy_id profile image image_cache])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[email password password_confirmation current_password name monofy_id profile image image_cache])
   end
 
   protected
@@ -29,5 +30,4 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:image])
     devise_parameter_sanitizer.permit(:account_update, keys: [:profile])
   end
-
 end

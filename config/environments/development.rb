@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -62,12 +64,12 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.action_mailer.smtp_settings = {
-    :enable_starttls_auto => true,
-    :address => "smtp.gmail.com",
-    :port => 587,
-    :domain => 'smtp.gmail.com',
-    :user_name => ENV['MAIL_ADDRESS'], #gmailアドレス
-    :password => ENV['MAIL_ADDRESS_PASSWORD'], #gmailパスワード
-    :authentication => 'login',
+    enable_starttls_auto: true,
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: 'smtp.gmail.com',
+    user_name: ENV['MAIL_ADDRESS'], # gmailアドレス
+    password: ENV['MAIL_ADDRESS_PASSWORD'], # gmailパスワード
+    authentication: 'login'
   }
 end

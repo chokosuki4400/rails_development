@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 # # config valid for current version and patch releases of Capistrano
-lock "~> 3.11.0"
+lock '~> 3.11.0'
 #
 # set :application, "my_app_name"
 # set :repo_url, "git@example.com:me/my_repo.git"
@@ -76,11 +78,10 @@ set :log_level, :debug
 
 # デプロイのタスク
 namespace :deploy do
-
   # 上記linked_filesで使用するファイルをアップロードするタスク
   desc 'Upload database.yml'
   task :upload do
-    on roles(:app) do |host|
+    on roles(:app) do |_host|
       if test "[ ! -d #{shared_path}/config ]"
         execute "mkdir -p #{shared_path}/config"
       end
