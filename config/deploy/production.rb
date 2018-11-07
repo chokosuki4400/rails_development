@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
@@ -6,8 +8,6 @@
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
-
-
 
 # role-based syntax
 # ==================
@@ -21,8 +21,6 @@
 # role :web, %w{user1@primary.com user2@additional.com}, other_property: :other_value
 # role :db,  %w{deploy@example.com}
 
-
-
 # Configuration
 # =============
 # You can set any configuration variable like in config/deploy.rb
@@ -30,8 +28,6 @@
 # For available Capistrano configuration variables see the documentation page.
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
-
-
 
 # Custom SSH Options
 # ==================
@@ -64,15 +60,15 @@ set :pty, true
 
 # サーバーのIP、ログインするユーザー名、サーバーの役割
 # 10022はポートを変更している場合。通常は22
-server '160.16.241.243', user: 'vpsuser', roles: %w{app web}, port: 10022
+server '160.16.241.243', user: 'vpsuser', roles: %w[app web], port: 10_022
 # set :rbenv_custom_path, '/root/.rbenv'
 set :rbenv_custom_path, '/home/vpsuser/.rbenv'
-#デプロイするサーバーにsshログインする鍵の情報。サーバー編で作成した鍵のパス
+# デプロイするサーバーにsshログインする鍵の情報。サーバー編で作成した鍵のパス
 set :ssh_options, keys: '~/.ssh/sakura_deployuser'
 
-set :linked_dirs, %w{bin log tmp/backup tmp/pids tmp/sockets vendor/bundle}
+set :linked_dirs, %w[bin log tmp/backup tmp/pids tmp/sockets vendor/bundle]
 
-shared_path = "/var/www/monofy.net.net/monofy/shared"
+shared_path = '/var/www/monofy.net.net/monofy/shared'
 set :unicorn_pid, "#{shared_path}/tmp/pids/unicorn.pid"
-set :unicorn_options, -> { "--path /staging" }
-set :unicorn_exec, -> { "unicorn_rails" }
+set :unicorn_options, -> { '--path /staging' }
+set :unicorn_exec, -> { 'unicorn_rails' }

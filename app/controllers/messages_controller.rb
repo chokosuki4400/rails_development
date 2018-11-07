@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MessagesController < ApplicationController
   before_action :set_twitter_client
 
@@ -53,7 +55,7 @@ class MessagesController < ApplicationController
     if @message.save
       redirect_to controller: :messages, action: :index
     else
-      render "new"
+      render 'new'
     end
   end
 
@@ -62,20 +64,20 @@ class MessagesController < ApplicationController
     @message.assign_attributes(message_params)
 
     if @message.save
-      #flagが立った時、ツイートする
+      # flagが立った時、ツイートする
       if @message.twitter_flag
         @twitter.update("#{@message.answer_text}\r#{@message.music_url}")
       end
       redirect_to controller: :messages, action: :index
     else
-      render "edit"
+      render 'edit'
     end
   end
 
   def destroy
     @message = current_user.messages.find_by(url_token: params[:url_token])
     @message.destroy
-    redirect_to :messages, notice: "記事を削除しました。"
+    redirect_to :messages, notice: '記事を削除しました。'
   end
 
   private
@@ -87,7 +89,7 @@ class MessagesController < ApplicationController
   def set_twitter_client
     # @user = User.where(:id => params[:user_id]).first
     @user = User.find_by(monofy_id: params[:user_monofy_id])
-    if @user.provider === "twitter"
+    if @user.provider === 'twitter'
       @twitter = Twitter::REST::Client.new do |config|
         config.consumer_key        = @user.consumer_key
         config.consumer_secret     = @user.consumer_secret
@@ -96,5 +98,4 @@ class MessagesController < ApplicationController
       end
     end
   end
-
 end
