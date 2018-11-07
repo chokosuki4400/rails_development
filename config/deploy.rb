@@ -82,9 +82,7 @@ namespace :deploy do
   desc 'Upload database.yml'
   task :upload do
     on roles(:app) do |_host|
-      if test "[ ! -d #{shared_path}/config ]"
-        execute "mkdir -p #{shared_path}/config"
-      end
+      execute "mkdir -p #{shared_path}/config" if test "[ ! -d #{shared_path}/config ]"
       upload!('config/database.yml', "#{shared_path}/config/database.yml")
     end
   end
