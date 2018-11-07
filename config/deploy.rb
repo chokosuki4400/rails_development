@@ -71,21 +71,32 @@ set :keep_releases, 5
 set :rbenv_ruby, '2.5.1'
 
 # 出力するログのレベル。
+set :format, :pretty
 set :log_level, :debug
 
 # デプロイのタスク
 namespace :deploy do
 
-  # unicornの再起動
-  desc 'Restart application'
-  task :restart do
-    invoke 'unicorn:restart'
+  # 上記linked_filesで使用するファイルをアップロードするタスク
+  desc 'Upload database.yml'
+  task :upload do
+    on roles(:app) do |host|
+      if test "[ ! -d #{shared_path}/config ]"
+        execute "mkdir -p #{shared_path}/config"
+      end
+      upload!('config/database.yml', "#{shared_path}/config/database.yml")
+    end
   end
 
-  after :publishing, :restart
-
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
+  desc 'Restart application'
+  task :restart do
+    on roles(:app) do
+      invoke 'unicorn:restart'
     end
   end
 end
+
+# linked_filesで使用するファイルをアップロードするタスクは、deployが行われる前に実行する必要がある
+before 'deploy:starting', 'deploy:upload'
+# Capistrano 3.1.0 からデフォルトで deploy:restart タスクが呼ばれなくなったので、ここに以下の1行を書く必要がある
+after 'deploy:publishing', 'deploy:restart'
