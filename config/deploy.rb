@@ -61,7 +61,7 @@ set :rbenv_type, :system
 set :linked_files, fetch(:linked_files, []).push('config/secrets.yml')
 
 # シンボリックリンクをはるフォルダ
-# set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 
 # 保持するバージョンの個数
 set :keep_releases, 5
@@ -74,10 +74,18 @@ set :rbenv_ruby, '2.5.1'
 set :log_level, :debug
 
 # デプロイのタスク
-after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
+
+  # unicornの再起動
   desc 'Restart application'
   task :restart do
     invoke 'unicorn:restart'
+  end
+
+  after :publishing, :restart
+
+  after :restart, :clear_cache do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
+    end
   end
 end

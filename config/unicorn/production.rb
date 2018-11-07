@@ -1,33 +1,41 @@
-base = "/var/www/monofy.net/monofy"
-current_path = "#{base}/current"
-shared_path = "#{base}/shared"
-working_directory current_path
+#ワーカーの数
+$worker  = 2
+#何秒経過すればワーカーを削除するのかを決める
+$timeout = 30
+#自分のアプリケーション名、currentがつくことに注意。
+$app_dir = "/var/www/hoge_app/current"
+#リクエストを受け取るポート番号を指定。後述
+$listen  = File.expand_path 'tmp/sockets/.unicorn.sock', $app_dir
+#PIDの管理ファイルディレクトリ
+$pid     = File.expand_path 'tmp/pids/unicorn.pid', $app_dir
+#エラーログを吐き出すファイルのディレクトリ
+$std_log = File.expand_path 'log/unicorn.log', $app_dir
 
-worker_processes 2
+# 上記で設定したものが適応されるよう定義
+worker_processes  $worker
+working_directory $app_dir
+stderr_path $std_log
+stdout_path $std_log
+timeout $timeout
+listen  $listen
+pid $pid
+
+#ホットデプロイをするかしないかを設定
 preload_app true
-timeout 30
 
-stderr_path "#{current_path}/log/unicorn.stderr.log"
-stdout_path "#{current_path}/log/unicorn.stdout.log"
-listen "/tmp/unicorn.staging.sock"
-pid "#{shared_path}/tmp/pids/unicorn.pid"
-
-#ダウンタイム無し
-preload_app true
-
+#fork前に行うことを定義
 before_fork do |server, worker|
-  ENV['BUNDLE_GEMFILE'] = File.expand_path('Gemfile', current_path)
+  defined?(ActiveRecord::Base) and ActiveRecord::Base.connection.disconnect!
   old_pid = "#{server.config[:pid]}.oldbin"
-  if File.exists?(old_pid) && server.pid != old_pid
+  if old_pid != server.pid
     begin
-      sig = (worker.nr + 1) >= server.worker_processes ? :QUIT : :TTOU
-      Process.kill(sig, File.read(old_pid).to_i)
+      Process.kill "QUIT", File.read(old_pid).to_i
     rescue Errno::ENOENT, Errno::ESRCH
-      # someone else did our job for us
     end
   end
 end
 
+#fork後に行うことを定義
 after_fork do |server, worker|
   defined?(ActiveRecord::Base) and ActiveRecord::Base.establish_connection
 end
