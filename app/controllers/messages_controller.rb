@@ -65,9 +65,7 @@ class MessagesController < ApplicationController
 
     if @message.save
       # flagが立った時、ツイートする
-      if @message.twitter_flag
-        @twitter.update("#{@message.answer_text}\r#{@message.music_url}")
-      end
+      @twitter.update("#{@message.answer_text}\r#{@message.music_url}") if @message.twitter_flag
       redirect_to controller: :messages, action: :index
     else
       render 'edit'
