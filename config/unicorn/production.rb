@@ -1,14 +1,16 @@
-#ワーカーの数
+# frozen_string_literal: true
+
+# ワーカーの数
 $worker  = 2
-#何秒経過すればワーカーを削除するのかを決める
+# 何秒経過すればワーカーを削除するのかを決める
 $timeout = 30
-#自分のアプリケーション名、currentがつくことに注意。
-$app_dir = "/var/www/monofy.net/monofy/current"
-#リクエストを受け取るポート番号を指定。後述
+# 自分のアプリケーション名、currentがつくことに注意。
+$app_dir = '/var/www/monofy.net/monofy/current'
+# リクエストを受け取るポート番号を指定。後述
 $listen  = File.expand_path 'tmp/sockets/.unicorn.sock', $app_dir
-#PIDの管理ファイルディレクトリ
+# PIDの管理ファイルディレクトリ
 $pid     = File.expand_path 'tmp/pids/unicorn.pid', $app_dir
-#エラーログを吐き出すファイルのディレクトリ
+# エラーログを吐き出すファイルのディレクトリ
 $std_log = File.expand_path 'log/unicorn.log', $app_dir
 
 # 上記で設定したものが適応されるよう定義
@@ -20,26 +22,26 @@ timeout $timeout
 listen  $listen
 pid $pid
 
-#ホットデプロイをするかしないかを設定
+# ホットデプロイをするかしないかを設定
 preload_app true
 
-#fork前に行うことを定義
-before_exec do |server|
+# fork前に行うことを定義
+before_exec do |_server|
   ENV['BUNDLE_GEMFILE'] = "#{$app_dir}/Gemfile"
 end
 
-before_fork do |server, worker|
-  defined?(ActiveRecord::Base) and ActiveRecord::Base.connection.disconnect!
+before_fork do |server, _worker|
+  defined?(ActiveRecord::Base) && ActiveRecord::Base.connection.disconnect!
   old_pid = "#{server.config[:pid]}.oldbin"
   if old_pid != server.pid
     begin
-      Process.kill "QUIT", File.read(old_pid).to_i
+      Process.kill 'QUIT', File.read(old_pid).to_i
     rescue Errno::ENOENT, Errno::ESRCH
     end
   end
 end
 
-#fork後に行うことを定義
-after_fork do |server, worker|
-  defined?(ActiveRecord::Base) and ActiveRecord::Base.establish_connection
+# fork後に行うことを定義
+after_fork do |_server, _worker|
+  defined?(ActiveRecord::Base) && ActiveRecord::Base.establish_connection
 end
