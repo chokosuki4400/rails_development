@@ -16,16 +16,17 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-  <style media="screen">
-    body { font-family: 'M PLUS 1p', sans-serif; }
-  </style>
 </head>
 
 <body>
 
   <%= render "shared/header" %>
 
-  <%= yield %>
+  <div class="l-content">
+    <div class="l-content__inner">
+    <%= yield %>
+  </div>
+  </div>
 
   <%= render "shared/footer" %>
 

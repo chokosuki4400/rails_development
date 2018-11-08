@@ -6,7 +6,6 @@
 @import "foundation/reset";
 @import "foundation/base";
 
-
 // =========================================================
 // Object
 // =========================================================
@@ -14,7 +13,7 @@
 // -----------------------------------------------------------------
 // layout
 // -----------------------------------------------------------------
-@import "layout/contents.scss";
+@import "layout/content.scss";
 @import "layout/sidebar.scss";
 
 // -----------------------------------------------------------------
@@ -31,9 +30,12 @@
 @import "object/component/card.scss";
 @import "object/component/form.scss";
 @import "object/component/title.scss";
+@import "object/component/img.scss";
 
 // -----------------------------------------------------------------
 // Project
 // -----------------------------------------------------------------
 @import "object/project/footer.scss";
 @import "object/project/header.scss";
+@import "object/project/tab.scss";
+@import "object/project/table.scss";

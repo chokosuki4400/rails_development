@@ -1,2 +1,11 @@
 .p-footer {
+  width: 100%;
+  @include fontsize(10);
+  background: #000000;
+  text-align: center;
+  color: #ffffff;
+
+  a {
+    color: #ffffff;
+  }
 }

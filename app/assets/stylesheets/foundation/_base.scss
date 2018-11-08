@@ -1,5 +1,5 @@
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Open Sans', 'Noto Sans Japanese', "Helvetica Neue", "Yu Gothic", YuGothic, Verdana, Meiryo, 'Quicksand', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "M PLUS 1p", "Helvetica Neue", "Yu Gothic", YuGothic, Verdana, Meiryo, sans-serif;
   line-height: 1.6;
   font-size: 16px;
   word-wrap : break-word;
@@ -9,9 +9,6 @@ a,
 a:active {
   text-decoration: none;
   color: #000000;
-
-  &:hover {
-  }
 }
 
 h1,
@@ -50,10 +47,6 @@ input:focus,
 select:focus,
 textarea:focus {
   outline: none;
-}
-
-input {
-  border: none;
 }
 
 img {

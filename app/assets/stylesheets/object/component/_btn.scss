@@ -1,18 +1,25 @@
 .c-btn {
-	width: 240px;
-	background: $defaultColor;
+	width: 100%;
 	box-shadow: 0 1px 1px 0 $darkgray9B;
+	border: 1px solid $defaultColor;
 	border-radius: 2px;
 	text-align: center;
+	display: block;
+	padding: 16px 0;
+	@include fontsize(14);
+	font-weight: bold;
+	color: $defaultColor;
 
-	a,
-	input {
-		width: 100%;
-		display: block;
-		padding: 8px 0;
-		@include fontsize(14);
-		font-weight: bold;
-		color: #fff;
+	&--normal {
+		@extend .c-btn;
+		color: $darkgray1A;
+		border: 1px solid $darkgray1A;
+	}
+
+	&--twitter {
+		@extend .c-btn;
+		color: #1da1f2;
+		border: 1px solid #1da1f2;
 	}
 
 	&--accent {
@@ -23,25 +30,15 @@
 	&--more {
 		@extend .c-btn;
 		background: $moreColor;
-		width: 320px;
-
-		a,
-		input {
-			color: $darkgray47;
-		}
 	}
 
 	&--primary {
 		@extend .c-btn;
 		background: #fff;
 		border: 1px solid $primaryColor;
-
-		a,
-		input {
-			color: $primaryColor;
-		}
+		color: $primaryColor;
 	}
-	
+
 	&--secondary {
 		@extend .c-btn;
 		background: $secondaryColor;

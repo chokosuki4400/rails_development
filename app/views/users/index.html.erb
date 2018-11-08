@@ -1,61 +1,19 @@
-<div class="p-user">
-	<div class="c-box p-user__item">
-		<h2 class="c-headline"><%=current_user.name%>さんのマイページ</h2>
-		<%if user_signed_in? %>
-		<div class="c-img--circle" style="background-image: url(<%= current_user.image %>)"></div>
+<h2 class="c-title"><%=current_user.name%>さんのマイページ</h2>
 
-		<style>
-		table {
-			width: 980px;
-			margin: auto;
-			font-size: 12px;
-		}
-		th {
-			font-weight: bold;
-			width: 10%;
-		}
-		td {
-			width: 90%;
-		}
-		</style>
+<%if user_signed_in? %>
+<div class="c-img--circle" style="background-image: url(<%= current_user.image %>)"></div>
+<dl class="p-table">
+	<dt>表示名</dt>
+	<dd><%=current_user.name%></dd>
+	<dt>Monofy ID</dt>
+	<dd><%=current_user.monofy_id%></dd>
+	<dt>プロフィール</dt>
+	<dd><%=current_user.profile%></dd>
+</dl>
 
-		<table>
-			<tr>
-				<th>表示名</th>
-				<td><%=current_user.name%></td>
-			</tr>
-			<tr>
-				<th>ニックネーム</th>
-				<td><%=current_user.monofy_id%></td>
-			</tr>
-			<tr>
-				<th>Profile</th>
-				<td><%=current_user.profile%></td>
-			</tr>
-			<tr>
-				<th>アバター</th>
-				<td><img src="<%=current_user.image%>" width="50" height="50" alt="" id="MainPhoto"></td>
-			</tr>
-		</table>
+<%= link_to edit_user_registration_path, class:"c-btn--twitter" do %>
+<i class="far fa-edit"></i>アカウント編集
+<% end %>
 
-		<div class="c-button">
-			<%= link_to "投稿一覧", user_messages_path(current_user.monofy_id) %>
-		</div>
-
-		<div class="c-button">
-			<%= link_to "編集", edit_user_registration_path %>
-		</div>
-
-		<div class="c-button--disable">
-			<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-		</div>
-
-		<%# if current_user.admin_flg %>
-		<!-- 管理者のフラグが「true」の時、管理画面へのリンクを表示 -->
-		<div class="c-button">
-			<%#= link_to "管理画面",rails_admin.dashboard_path %>
-		</div>
-		<%#end%>
-		<%end%>
-	</div>
-</div>
+<%= link_to "ログアウト", destroy_user_session_path, class:"c-btn--disable", method: :delete, data: { confirm: "ログアウトしますか?" } %>
+<%end%>
