@@ -3,6 +3,7 @@
 class Message < ApplicationRecord
   belongs_to :author, class_name: 'User', foreign_key: 'user_id'
 
+  validates :message_text, presence: true
   validates :url_token, presence: true, uniqueness: true
 
   # 公開記事のみ

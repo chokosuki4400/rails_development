@@ -21,6 +21,12 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <dt>表示名</dt>
+  <dd><%= f.text_field :name %></dd>
+
+  <dt>Monofy ID</dt>
+  <dd><%= f.text_field :monofy_id %></dd>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>

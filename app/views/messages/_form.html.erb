@@ -5,7 +5,10 @@
     <th width="80"><%= form.label :message_text %></th>
     <td><%= form.text_field :message_text, size: 50 %></td>
   </tr>
-  <% if current_user %>
+  <% logger.debug("このページは読み込まれています") %>
+  <% logger.debug(@message.message_text.inspect) %>
+  <% logger.debug("//このページは読み込まれています") %>
+  <% if current_user && @message.message_text %>
   <tr>
     <th><%= form.label :answer_text %></th>
     <td><%= form.text_area :answer_text, rows: 10, cols: 45 %></td>
