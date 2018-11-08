@@ -1,0 +1,33 @@
+.c-form-checkbox {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	padding: 14px 12px;
+
+	&__item {
+
+		&--title {
+			@include fontsize(13);
+			color: #4A4A4A;
+			font-weight: bold;
+			margin: 0 0 0 8px;
+		}
+	}
+
+	.icon--check {
+		color: $darkgray9B;
+		padding: 0;
+	}
+
+	.icon--arrow {
+		margin-left: auto;
+		padding: 0;
+	}
+
+	&.is-active {
+
+		.icon--check {
+			color: $primaryColor;
+		}
+	}
+}

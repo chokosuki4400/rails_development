@@ -1,0 +1,9 @@
+.c-title {
+	@include fontsize(14);
+	font-weight: bold;
+
+	span {
+		@include fontsize(12);
+		color: $darkgray9B;
+	}
+}

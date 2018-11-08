@@ -1,0 +1,49 @@
+.c-btn {
+	width: 240px;
+	background: $defaultColor;
+	box-shadow: 0 1px 1px 0 $darkgray9B;
+	border-radius: 2px;
+	text-align: center;
+
+	a,
+	input {
+		width: 100%;
+		display: block;
+		padding: 8px 0;
+		@include fontsize(14);
+		font-weight: bold;
+		color: #fff;
+	}
+
+	&--accent {
+		@extend .c-btn;
+		background: $accentColor;
+	}
+
+	&--more {
+		@extend .c-btn;
+		background: $moreColor;
+		width: 320px;
+
+		a,
+		input {
+			color: $darkgray47;
+		}
+	}
+
+	&--primary {
+		@extend .c-btn;
+		background: #fff;
+		border: 1px solid $primaryColor;
+
+		a,
+		input {
+			color: $primaryColor;
+		}
+	}
+	
+	&--secondary {
+		@extend .c-btn;
+		background: $secondaryColor;
+	}
+}
