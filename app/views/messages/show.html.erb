@@ -3,7 +3,7 @@
 	<h2 class="c-answer__item__text"><%= @user.monofy_id %>さんの回答</h2>
 	<%if @message.answer_text %>
 
-	<p class="c-answer__item__title"><%= raw Rinku.auto_link(h(@message.answer_text)) %></p>
+	<p class="c-answer__item__title"><%= raw Rinku.auto_link(@message.answer_text, :all, 'target="_blank"') %></p>
 	<% end %>
 	<%if @message.music_url %>
 	<!-- <p class="c-answer__item__link">
