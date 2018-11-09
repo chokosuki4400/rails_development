@@ -9,12 +9,12 @@ class MessagesController < ApplicationController
       # user_idのハッシュがあった時
       @user = User.find(params[:user_id])
       @user = User.find_by(monofy_id: params[:user_monofy_id])
-      @messages = @user.messages
+      @messages = @user.messages.order(created_at: :desc)
     else
       @user = User.find_by(monofy_id: params[:user_monofy_id])
       # @messages = Message.all
       @message = Message.new
-      @messages = @user.messages
+      @messages = @user.messages.order(created_at: :desc)
     end
     # @messages = @messages.readable_for(current_user)
     # .order(posted_at: :desc).paginate(page: params[:page], per_page: 20)
@@ -66,7 +66,7 @@ class MessagesController < ApplicationController
     if @message.save
       # flagが立った時、ツイートする
       @twitter.update("#{@message.answer_text}\r#{@message.music_url}") if @message.twitter_flag
-      redirect_to controller: :messages, action: :index
+      redirect_to controller: :messages, action: :show
     else
       render 'edit'
     end

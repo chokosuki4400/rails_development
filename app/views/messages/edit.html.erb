@@ -1,8 +1,6 @@
-<div class="u-text--center">
-	<%#= link_to "一覧に戻る", @message ,class: "c-textlink c-text--midium"%>
-</div>
-
 <%= form_for [@user, @message], url: user_message_path do |form| %>
 <%= render "form", form: form %>
-<div class="c-button"><%= form.submit %></div>
+<div class="c-btn">
+  <%= form.submit %>
+</div>
 <% end %>
