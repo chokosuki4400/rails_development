@@ -6,4 +6,9 @@
 		@include fontsize(12);
 		color: $darkgray9B;
 	}
+
+	&--middle {
+		@include fontsize(12);
+		font-weight: bold;
+	}
 }

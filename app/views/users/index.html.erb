@@ -1,23 +1,45 @@
 <h2 class="c-title"><%=current_user.name%>さんのマイページ</h2>
 
 <%if user_signed_in? %>
-<div class="c-img--circle" style="background-image: url(<%= current_user.image %>)"></div>
-<dl class="p-table">
-	<dt>表示名</dt>
-	<dd><%=current_user.name%></dd>
-	<dt>Monofy ID</dt>
-	<dd><%=current_user.monofy_id%></dd>
-	<dt>プロフィール</dt>
-	<dd><%=current_user.profile%></dd>
-</dl>
+<div class="p-profile">
+	<div class="c-img--circle" style="background-image: url(<%= current_user.image %>)"></div>
+	<ul class="c-list">
+		<li class="c-list__item"><%=current_user.name%></li>
+		<li class="c-list__item"><%=current_user.profile%></li>
+	</ul>
 
-<div class="c-btn--twitter">
-	<%= link_to edit_user_registration_path do %>
-	<i class="far fa-edit"></i> アカウント編集
+	<div class="c-link">
+		<%= link_to edit_user_registration_path do %>
+		<i class="far fa-edit"></i> アカウント編集
+		<% end %>
+	</div>
+
+	<div class="c-link">
+		<i class="fas fa-caret-right"></i> <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか?" } %>
+	</div>
+
+</div>
+
+
+<div class="p-message">
+	<h3 class="c-title--middle"><%=current_user.monofy_id%>さんへの質問</h3>
+
+	<% if @messages.present? %>
+	<ul class="c-message">
+		<% @messages.each do |message| %>
+		<li class="c-message__item">
+			<%= link_to user_message_path(@user.monofy_id, message) do %>
+			<div class="c-message__item__title"><%= truncate(message.message_text, length: 80) %></div>
+			<div class="c-message__item__btn"><i class="fas fa-caret-right"></i> もっとみる</div>
+			<% end %>
+		</li>
+		<% end %>
+	</ul>
+	<%#= will_paginate @messages %>
+	<% else %>
+	<p>記事がありません。</p>
 	<% end %>
+
 </div>
 
-<div class="c-link">
-	<i class="fas fa-caret-right"></i> <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか?" } %>
-</div>
 <%end%>

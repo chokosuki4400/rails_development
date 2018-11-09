@@ -1,0 +1,27 @@
+.c-message {
+	&__item {
+		margin: 16px 0 0;
+		background: #ffffff;
+		border-radius: 10px;
+		-webkit-box-shadow: 0 2px 4px hsla(0,0%,76%,.2);
+		box-shadow: 0 2px 4px hsla(0,0%,76%,.2);
+
+		// &:first-child {
+		// 	margin: 0;
+		// }
+
+		a {
+			padding: 16px;
+			display: block;
+			width: 100%;
+		}
+
+		&__title {
+			@include fontsize(14);
+		}
+		&__btn {
+			@include fontsize(12);
+			text-align: right;
+		}
+	}
+}
