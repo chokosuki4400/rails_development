@@ -1,0 +1,50 @@
+.c-btn {
+	box-shadow: 0 1px 1px 0 $darkgray9B;
+	background: $defaultColor;
+	border-radius: 2px;
+	text-align: center;
+	@include fontsize(14);
+	font-weight: bold;
+	margin: 16px 0 0;
+
+	a,
+	input {
+		width: 100%;
+		display: block;
+		color: #ffffff;
+		padding: 8px 0;
+	}
+
+	&--normal {
+		@extend .c-btn;
+		background: $darkgray1A;
+	}
+
+	&--twitter {
+		@extend .c-btn;
+		background: #1da1f2;
+		color: #ffffff;
+	}
+
+	&--accent {
+		@extend .c-btn;
+		background: $accentColor;
+	}
+
+	&--more {
+		@extend .c-btn;
+		background: $moreColor;
+	}
+
+	&--primary {
+		@extend .c-btn;
+		background: #fff;
+		border: 1px solid $primaryColor;
+		color: $primaryColor;
+	}
+
+	&--secondary {
+		@extend .c-btn;
+		background: $secondaryColor;
+	}
+}

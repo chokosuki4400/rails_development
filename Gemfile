@@ -66,7 +66,8 @@ gem 'capistrano3-unicorn'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'rubocop', '~> 0.55.0', require: false
+  gem 'rubocop', require: false
+  gem 'scss_lint', require: false
 end
 
 group :development do

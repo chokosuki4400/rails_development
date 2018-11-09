@@ -1,0 +1,22 @@
+.p-tab {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border-top: 1px solid $darkgray1A;
+
+  &__item {
+    text-align: center;
+    width: 25%;
+    border-left: 1px solid $darkgray1A;
+
+    &:first-child {
+      border-left: none;
+    }
+
+    a {
+      width: 100%;
+      padding: 8px 0;
+      display: block;
+    }
+  }
+}

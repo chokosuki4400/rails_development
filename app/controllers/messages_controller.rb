@@ -11,9 +11,9 @@ class MessagesController < ApplicationController
       @user = User.find_by(monofy_id: params[:user_monofy_id])
       @messages = @user.messages
     else
-      # @hoge = User.where(:id => params[:user_id]).first
       @user = User.find_by(monofy_id: params[:user_monofy_id])
       # @messages = Message.all
+      @message = Message.new
       @messages = @user.messages
     end
     # @messages = @messages.readable_for(current_user)

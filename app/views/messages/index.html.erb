@@ -1,10 +1,13 @@
-<%# if current_user %>
 <p>
   <%= link_to "質問の作成", :new_user_message %>
 </p>
-<%# end %>
 
 <p><%= @user.name %>さんへの質問</p>
+
+<%= form_for [@user, @message], url: user_messages_path do |form| %>
+<%= render "form", form: form %>
+<p><%= form.submit %></p>
+<% end %>
 
 <% if @messages.present? %>
   <% @messages.each do |message| %>
@@ -24,7 +27,6 @@
     <% end %>
 
   <%= link_to "もっと読む", user_message_path(@user.monofy_id, message) %>
-  <%#= link_to message.id, user_message_path(@messages, message) %>
 </p>
 <% end %>
 <%#= will_paginate @messages %>
