@@ -1,19 +1,20 @@
-<ul>
-  <li>
-    <%= link_to "使い方",user_twitter_omniauth_authorize_path, class: "c-btn" %>
+<ul class="p-home">
+  <li class="c-btn">
+    <%= link_to "使い方",user_twitter_omniauth_authorize_path %>
   </li>
 
   <%if user_signed_in? %>
-  <li><%= link_to "ログアウト", destroy_user_session_path, class:'c-btn', method: :delete, data: { confirm: 'ログアウトしますか?' } %></li>
+  <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか?' } %></li>
   <% else %>
-  <li>
-    <%= link_to user_twitter_omniauth_authorize_path, class:'c-btn--twitter' do %>
-    <i class="fab fa-twitter"></i>Twitterで登録・ログイン
+  <li class="c-btn--twitter">
+    <%= link_to user_twitter_omniauth_authorize_path do %>
+    <i class="fab fa-twitter"></i>&nbsp;Twitterで登録・ログイン
     <% end %>
   </li>
-  <li>
-    <%= link_to 'メールアドレスで登録', new_user_registration_path, class:'c-btn--normal' %>
+  <li class="c-btn--normal">
+    <%= link_to  new_user_registration_path do %>
+    <i class="far fa-envelope"></i>&nbsp;メールアドレスで登録
+    <% end %>
   </li>
   <% end %>
-
 </ul>

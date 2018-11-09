@@ -4,7 +4,7 @@
   <%= devise_error_messages! %>
   <dl class="p-table">
     <dt><%= f.label :email %></dt>
-    <dd><%= f.email_field :email, autofocus: true, autocomplete: "email" %></dd>
+    <dd><%= f.email_field :email, autocomplete: "email" %></dd>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <dt>Currently waiting confirmation for: <%= resource.unconfirmed_email %></dt>

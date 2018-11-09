@@ -11,9 +11,13 @@
 	<dd><%=current_user.profile%></dd>
 </dl>
 
-<%= link_to edit_user_registration_path, class:"c-btn--twitter" do %>
-<i class="far fa-edit"></i>アカウント編集
-<% end %>
+<div class="c-btn--twitter">
+	<%= link_to edit_user_registration_path do %>
+	<i class="far fa-edit"></i> アカウント編集
+	<% end %>
+</div>
 
-<%= link_to "ログアウト", destroy_user_session_path, class:"c-btn--disable", method: :delete, data: { confirm: "ログアウトしますか?" } %>
+<div class="c-link">
+	<i class="fas fa-caret-right"></i> <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか?" } %>
+</div>
 <%end%>

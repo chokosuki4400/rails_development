@@ -53,3 +53,13 @@ img {
   max-width : 100% ;
   height : auto ;
 }
+
+#error_explanation {
+  color: red;
+  @include fontsize(10);
+  font-weight: bold;
+
+  h2 {
+    display: none;
+  }
+}

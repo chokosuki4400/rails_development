@@ -1,16 +1,32 @@
-<h2>Forgot your password?</h2>
+<h2 class="c-title">パスワード再発行</h2>
+
+<p>パスワードをリセットして、再発行します。</p>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+<%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<dl class="p-table">
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
+  <dt><%= f.label :email %></dt>
+  <dd><%= f.email_field :email, autocomplete: "email" %></dd>
+</dl>
+
+<div class="c-btn">
+  <%= f.submit "送信" %>
+</div>
+
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%- if controller_name != 'sessions' %>
+<div class="c-link">
+  <i class="fas fa-caret-right"></i> <%= link_to "ログイン", new_session_path(resource_name) %>
+</div>
+<% end -%>
+
+<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+<div class="c-link">
+  <i class="fas fa-caret-right"></i> <%= link_to "アカウント登録", new_registration_path(resource_name) %>
+</div>
+<% end -%>
+
+<%#= render "devise/shared/links" %>

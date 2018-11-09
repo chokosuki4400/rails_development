@@ -1,33 +1,41 @@
 .c-form-checkbox {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	padding: 14px 12px;
+	margin: 16px 0 0;
+	@include fontsize(14);
 
-	&__item {
+	#user_remember_me + label {
+		padding-left: 24px;
+		position:relative;
+	}
 
-		&--title {
-			@include fontsize(13);
-			color: #4A4A4A;
-			font-weight: bold;
-			margin: 0 0 0 8px;
+	label {
+		&:before {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 15px;
+			height: 15px;
+			border: 1px solid #999;
+			border-radius: 50%;
 		}
 	}
 
-	.icon--check {
-		color: $darkgray9B;
-		padding: 0;
-	}
-
-	.icon--arrow {
-		margin-left: auto;
-		padding: 0;
-	}
-
-	&.is-active {
-
-		.icon--check {
-			color: $primaryColor;
+	#user_remember_me {
+		&:checked {
+			+ label {
+				&:after {
+					content: "";
+					display: block;
+					position: absolute;
+					top: 3px;
+					left: 3px;
+					width: 11px;
+					height: 11px;
+					background: $defaultColor;
+					border-radius: 50%;
+				}
+			}
 		}
 	}
 }

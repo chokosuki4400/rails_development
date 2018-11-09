@@ -1,25 +1,29 @@
 .c-btn {
-	width: 100%;
 	box-shadow: 0 1px 1px 0 $darkgray9B;
-	border: 1px solid $defaultColor;
+	background: $defaultColor;
 	border-radius: 2px;
 	text-align: center;
-	display: block;
-	padding: 16px 0;
 	@include fontsize(14);
 	font-weight: bold;
-	color: $defaultColor;
+	margin: 16px 0 0;
+
+	a,
+	input {
+		width: 100%;
+		display: block;
+		color: #ffffff;
+		padding: 8px 0;
+	}
 
 	&--normal {
 		@extend .c-btn;
-		color: $darkgray1A;
-		border: 1px solid $darkgray1A;
+		background: $darkgray1A;
 	}
 
 	&--twitter {
 		@extend .c-btn;
-		color: #1da1f2;
-		border: 1px solid #1da1f2;
+		background: #1da1f2;
+		color: #ffffff;
 	}
 
 	&--accent {
