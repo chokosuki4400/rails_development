@@ -18,13 +18,16 @@
 		&__title {
 			@include fontsize(14);
 			margin: 8px 0 0;
+
+			a {
+				color: blue;
+				text-decoration: underline;
+			}
 		}
 
-		&__link {
-			@include fontsize(10);
-			color: blue;
-			text-decoration: underline;
-			margin: 8px 0 0;
-		}
+		// &__link {
+		// 	@include fontsize(10);
+		// 	margin: 8px 0 0;
+		// }
 	}
 }

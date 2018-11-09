@@ -2,12 +2,13 @@
 <div class="c-answer__item">
 	<h2 class="c-answer__item__text"><%= @user.monofy_id %>さんの回答</h2>
 	<%if @message.answer_text %>
-	<p class="c-answer__item__title"><%= @message.answer_text %></p>
+
+	<p class="c-answer__item__title"><%= raw Rinku.auto_link(h(@message.answer_text)) %></p>
 	<% end %>
 	<%if @message.music_url %>
-	<p class="c-answer__item__link">
+	<!-- <p class="c-answer__item__link">
 		<a href="<%= @message.music_url %>" target="_blank"><%= @message.music_url %></a>
-	</p>
+	</p> -->
 	<% end %>
 </div>
 <% end %>

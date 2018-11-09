@@ -49,6 +49,9 @@ gem 'twitter'
 # 画像アップロード
 gem 'carrierwave'
 
+# 自動リンク生成
+gem 'rinku'
+
 # 日本語化
 gem 'rails-i18n'
 
