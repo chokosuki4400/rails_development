@@ -40,12 +40,12 @@ window.onload = function(){
 
     entryTextArea.addEventListener("keyup",function(){
       var entryTextValue = entryTextArea.value;
-      console.log(entryTextValue);
+      var entryTextCount = charcount(entryTextValue);
 
-      if(entryTextValue !== "" ){
-        entrySubmitBtn.disabled = false;
-      }else{
+      if(entryTextCount == 0 ){
         entrySubmitBtn.disabled = true;
+      }else{
+        entrySubmitBtn.disabled = false;
       }
     });
   }
