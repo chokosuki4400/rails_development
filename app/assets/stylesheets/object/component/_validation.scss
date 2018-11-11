@@ -1,0 +1,9 @@
+#c-validation {
+
+  &__submit {
+    &:disabled {
+      background: #ccc;
+      cursor :not-allowed;
+    }
+  }
+}

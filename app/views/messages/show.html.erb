@@ -23,7 +23,7 @@
 
 <% if current_user == @message.author %>
 <div class="c-btn">
-	<%= link_to "回答する", edit_user_message_path(@user.monofy_id, @message) %>
+	<%= link_to "回答する", edit_user_message_path(@user.monofy_id, @message), data: {"turbolinks"=>false} %>
 </div>
 <% end %>
 
