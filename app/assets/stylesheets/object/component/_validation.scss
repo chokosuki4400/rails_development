@@ -1,0 +1,10 @@
+#c-validation {
+
+  &__submit,
+  &__entry {
+    &:disabled {
+      background: #ccc;
+      cursor: auto;
+    }
+  }
+}

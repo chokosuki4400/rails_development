@@ -12,13 +12,13 @@
 	</li>
 
 	<li class="p-tab__item">
-		<%= link_to user_messages_path(current_user.monofy_id), class:'' do %>
+		<%= link_to user_messages_path(current_user.monofy_id), class:'', data: {"turbolinks"=>false} do %>
 		<i class="far fa-envelope"></i>
 		<% end %>
 	</li>
 
 	<li class="p-tab__item">
-		<%= link_to user_messages_path(current_user.monofy_id), class:'' do %>
+		<%= link_to user_messages_path(current_user.monofy_id), class:'', data: {"turbolinks"=>false} do %>
 		<i class="far fa-question-circle"></i>
 		<% end %>
 	</li>

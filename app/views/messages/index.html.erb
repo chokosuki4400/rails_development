@@ -1,35 +1,31 @@
-<p>
-  <%= link_to "質問の作成", :new_user_message %>
-</p>
-
-<p><%= @user.name %>さんへの質問</p>
+<!-- <p>
+<%#= link_to "質問の作成", :new_user_message %>
+</p> -->
 
 <%= form_for [@user, @message], url: user_messages_path do |form| %>
-<%= render "form", form: form %>
-<p><%= form.submit %></p>
+	<%= render "form", form: form %>
+	<div class="c-btn">
+	<%= form.submit id: "c-validation__entry" %>
+</div>
 <% end %>
 
-<% if @messages.present? %>
-  <% @messages.each do |message| %>
-    <p><%= truncate(message.message_text, length: 80) %><br>
-    <%if message.answer_text.blank? %>
-      <p>質問の回答がありません。</p>
-    <% else %>
-      <p><%= message.answer_text %></p>
-      <p>質問の回答があります。</p>
-    <% end %>
+<div class="p-message">
+	<h3 class="c-title--middle"><%=@user.monofy_id%>さんへの質問</h3>
 
-    <%if message.music_url.blank? %>
-      <p>音源の回答がありません。</p>
-    <% else %>
-      <p><a href="<%= message.music_url %>" target="_blank"><%= message.music_url %></a></p>
-      <p>音源の回答があります。</p>
-    <% end %>
+	<% if @messages.present? %>
+	<ul class="c-message">
+		<% @messages.each do |message| %>
+		<li class="c-message__item">
+			<%= link_to user_message_path(@user.monofy_id, message), class: "c-message__item__link" do %>
+			<p class="c-message__item__title"><%= message.message_text %></p>
+			<p class="c-message__item__btn"><i class="fas fa-caret-right"></i> もっとみる</p>
+			<% end %>
+		</li>
+		<% end %>
+	</ul>
+	<%#= will_paginate @messages %>
+	<% else %>
+	<p>記事がありません。</p>
+	<% end %>
 
-  <%= link_to "もっと読む", user_message_path(@user.monofy_id, message) %>
-</p>
-<% end %>
-<%#= will_paginate @messages %>
-<% else %>
-<p>記事がありません。</p>
-<% end %>
+</div>
