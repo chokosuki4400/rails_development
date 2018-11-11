@@ -32,26 +32,50 @@ var charcount = function (str) {
 
 window.onload = function(){
 
+  var entryTextArea = document.getElementById("message_message_text");
+  var entrySubmitBtn = document.getElementById("c-validation__entry");
+
+  if(entryTextArea != null && entrySubmitBtn != null) {
+    entrySubmitBtn.disabled = true;
+
+    entryTextArea.addEventListener("keyup",function(){
+      var entryTextValue = entryTextArea.value;
+      console.log(entryTextValue);
+
+      if(entryTextValue !== "" ){
+        entrySubmitBtn.disabled = false;
+      }else{
+        entrySubmitBtn.disabled = true;
+      }
+    });
+  }
+
   var textArea = document.getElementById("c-validation__area");
   var checkText = document.getElementById("c-validation__count");
   var submitBtn = document.getElementById("c-validation__submit");
-  var textValue = textArea.value;
-  var textCount = charcount(textValue);
-  checkText.innerHTML = textCount;
 
-  textArea.addEventListener("keyup",function(){
+  if(textArea != null) {
+
     var textValue = textArea.value;
     var textCount = charcount(textValue);
-
     checkText.innerHTML = textCount;
 
-    if(textCount <= 238){
-      textArea.style.borderColor = "#4E84FF";
-      submitBtn.disabled = false;
-    }else{
-      textArea.style.borderColor = "red";
-      submitBtn.disabled = true;
-    }
-    console.log(textCount);
-  });
+    textArea.addEventListener("keyup",function(){
+      var textValue = textArea.value;
+      var textCount = charcount(textValue);
+
+      checkText.innerHTML = textCount;
+
+      if(textCount == 0){
+        textArea.style.borderColor = "red";
+        submitBtn.disabled = true;
+      }else if (textCount >= 238 ) {
+        textArea.style.borderColor = "red";
+        submitBtn.disabled = true;
+      }else{
+        textArea.style.borderColor = "#4E84FF";
+        submitBtn.disabled = false;
+      }
+    });
+  }
 }

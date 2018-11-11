@@ -3,7 +3,8 @@
 class Message < ApplicationRecord
   belongs_to :author, class_name: 'User', foreign_key: 'user_id'
 
-  validates :message_text, presence: true
+  validates :message_text, presence: true, length: { minimum: 1 }
+  validates :answer_text, length: { maximum: 238 }
   validates :url_token, presence: true, uniqueness: true
 
   # 公開記事のみ
