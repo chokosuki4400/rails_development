@@ -64,8 +64,11 @@ server '160.16.241.243', user: 'vpsuser', roles: %w[app web], port: 10022
 # set :rbenv_custom_path, '/root/.rbenv'
 set :rbenv_custom_path, '/home/vpsuser/.rbenv'
 # デプロイするサーバーにsshログインする鍵の情報。サーバー編で作成した鍵のパス
-set :ssh_options, keys: '~/.ssh/sakura_deployuser'
-
+set :ssh_options, {
+ keys: %w(/home/vpsuser/.ssh/github),
+ forward_agent: true,
+ auth_methods: %w(publickey)
+}
 set :linked_dirs, %w[bin log tmp/backup tmp/pids tmp/sockets vendor/bundle]
 
 shared_path = '/var/www/monofy.net.net/monofy/shared'
