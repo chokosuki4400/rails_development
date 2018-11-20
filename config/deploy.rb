@@ -53,8 +53,6 @@ set :repo_url, 'git@github.com:y-onishi4400/monofy.git'
 # deployするブランチ。デフォルトはmasterなのでなくても可。
 set :branch, 'master'
 
-set :user, 'y-onishi4400'
-
 # deploy先のディレクトリ。
 set :deploy_to, '/var/www/monofy.net/monofy'
 
