@@ -60,7 +60,7 @@ set :pty, true
 
 # サーバーのIP、ログインするユーザー名、サーバーの役割
 # 10022はポートを変更している場合。通常は22
-server '160.16.241.243', user: 'vpsuser', roles: %w[app web], port: 10_022
+server '160.16.241.243', user: 'vpsuser', roles: %w[app web], port: 10022
 # set :rbenv_custom_path, '/root/.rbenv'
 set :rbenv_custom_path, '/home/vpsuser/.rbenv'
 # デプロイするサーバーにsshログインする鍵の情報。サーバー編で作成した鍵のパス
