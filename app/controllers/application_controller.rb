@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
   # ログイン済ユーザーのみにアクセスを許可する
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  def after_sign_in_path_for(resource)
+    users_path
+  end
+
   private
 
   def login_required

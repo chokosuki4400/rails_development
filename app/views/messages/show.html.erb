@@ -1,33 +1,29 @@
-<article class="p-article c-talk--right">
+<% if @message.answer_text || @message.music_url %>
+<div class="c-answer__item">
+	<h2 class="c-answer__item__text"><%= @user.monofy_id %>さんの回答</h2>
+	<%if @message.answer_text %>
 
-	<div class="c-talk__text">
-		<h1 class="c-talk__balloon"><%= @message.message_text %></h1>
-	</div>
-
-	<% if current_user == @message.author %>
-	<ul class="p-article__bottom c-text--midium">
-		<li>
-			<%= link_to "編集", edit_user_message_path(@user.monofy_id, @message) %>
-		</li>
-	</ul>
+	<p class="c-answer__item__title"><%= raw Rinku.auto_link(@message.answer_text, :all, 'target="_blank"') %></p>
 	<% end %>
-</article>
-
-<% if @message.message_text? %>
-<div class="p-article__detail">
-	<div class="p-article__detail__ttl">ホメエピソード</div>
-	<%= simple_format(@message.message_text, :class => "p-article__detail__text") %>
-	<%if @message.answer_text.blank? %>
-	<p>回答がありません。</p>
-	<% else %>
-	<p><%= @message.answer_text %></p>
-	<p>回答があります。</p>
-	<% end %>
-	<%if @message.music_url.blank? %>
-	<p>音源の回答がありません。</p>
-	<% else %>
-	<p><a href="<%= @message.music_url %>" target="_blank"><%= @message.music_url %></a></p>
-	<p>音源の回答があります。</p>
+	<%if @message.music_url %>
+	<!-- <p class="c-answer__item__link">
+		<a href="<%= @message.music_url %>" target="_blank"><%= @message.music_url %></a>
+	</p> -->
 	<% end %>
 </div>
 <% end %>
+
+<div class="c-message">
+	<div class="c-message__item">
+		<div class="c-message__item__link">
+			<p class="c-message__item__title"><%= @message.message_text %></p>
+		</div>
+	</div>
+</div>
+
+<% if current_user == @message.author %>
+<div class="c-btn">
+	<%= link_to "回答する", edit_user_message_path(@user.monofy_id, @message), data: {"turbolinks"=>false} %>
+</div>
+<% end %>
+

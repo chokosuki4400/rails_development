@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    models:
+      user: アカウント
+    attributes:
+      user:
+        name: 表示名
+        email: メールアドレス
+        monofy_id: Monofy ID
+        password: パスワード
+        password_confirmation: パスワード（確認用）
+        remember_me: パスワードを記憶する
+      message:
+        message_text: 質問
+        answer_text: 回答
+        music_url: 音楽のURL
+        twitter_flag: twitterへの投稿

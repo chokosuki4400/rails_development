@@ -1,61 +1,45 @@
-<div class="p-user">
-	<div class="c-box p-user__item">
-		<h2 class="c-headline"><%=current_user.name%>さんのマイページ</h2>
-		<%if user_signed_in? %>
-		<div class="c-img--circle" style="background-image: url(<%= current_user.image %>)"></div>
+<h2 class="c-title"><%=current_user.name%>さんのマイページ</h2>
 
-		<style>
-		table {
-			width: 980px;
-			margin: auto;
-			font-size: 12px;
-		}
-		th {
-			font-weight: bold;
-			width: 10%;
-		}
-		td {
-			width: 90%;
-		}
-		</style>
+<%if user_signed_in? %>
+<div class="p-profile">
+	<div class="c-img--circle" style="background-image: url(<%= current_user.image %>)"></div>
+	<ul class="c-list">
+		<li class="c-list__item"><%=current_user.name%></li>
+		<li class="c-list__item"><%=current_user.profile%></li>
+	</ul>
 
-		<table>
-			<tr>
-				<th>表示名</th>
-				<td><%=current_user.name%></td>
-			</tr>
-			<tr>
-				<th>ニックネーム</th>
-				<td><%=current_user.monofy_id%></td>
-			</tr>
-			<tr>
-				<th>Profile</th>
-				<td><%=current_user.profile%></td>
-			</tr>
-			<tr>
-				<th>アバター</th>
-				<td><img src="<%=current_user.image%>" width="50" height="50" alt="" id="MainPhoto"></td>
-			</tr>
-		</table>
-
-		<div class="c-button">
-			<%= link_to "投稿一覧", user_messages_path(current_user.monofy_id) %>
-		</div>
-
-		<div class="c-button">
-			<%= link_to "編集", edit_user_registration_path %>
-		</div>
-
-		<div class="c-button--disable">
-			<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-		</div>
-
-		<%# if current_user.admin_flg %>
-		<!-- 管理者のフラグが「true」の時、管理画面へのリンクを表示 -->
-		<div class="c-button">
-			<%#= link_to "管理画面",rails_admin.dashboard_path %>
-		</div>
-		<%#end%>
-		<%end%>
+	<div class="c-link">
+		<%= link_to edit_user_registration_path do %>
+		<i class="far fa-edit"></i> アカウント編集
+		<% end %>
 	</div>
+
+	<div class="c-link">
+		<i class="fas fa-caret-right"></i> <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか?" } %>
+	</div>
+
 </div>
+
+
+<div class="p-message">
+	<h3 class="c-title--middle"><%=current_user.monofy_id%>さんへの質問</h3>
+
+	<% if @messages.present? %>
+	<ul class="c-message">
+		<% @messages.each do |message| %>
+		<li class="c-message__item">
+			<%= link_to user_message_path(@user.monofy_id, message), class: "c-message__item__link" do %>
+			<p class="c-message__item__title"><%= message.message_text %></p>
+			<p class="c-message__item__btn"><i class="fas fa-caret-right"></i> もっとみる</p>
+			<% end %>
+		</li>
+		<% end %>
+	</ul>
+	<%#= will_paginate @messages %>
+	<% else %>
+	<p>記事がありません。</p>
+	<% end %>
+
+</div>
+
+<%end%>

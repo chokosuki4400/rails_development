@@ -1,29 +1,40 @@
-<h2>Sign up</h2>
+<h2 class="c-title">新規登録</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<dl class="p-table">
 
-  <div class="field">
-    <%= f.label :password %>
+  <dt><%= f.label :name %></dt>
+  <dd><%= f.text_field :name %></dd>
+
+  <dt><%= f.label :monofy_id %></dt>
+  <dd><%= f.text_field :monofy_id %></dd>
+
+  <dt><%= f.label :email %></dt>
+  <dd><%= f.email_field :email, autocomplete: "email" %></dd>
+
+  <dt><%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <% end %>
+  </dt>
+  <dd><%= f.password_field :password, autocomplete: "new-password" %></dd>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+  <dt><%= f.label :password_confirmation %></dt>
+  <dd><%= f.password_field :password_confirmation, autocomplete: "new-password" %></dd>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+</dl>
+
+<div class="c-btn">
+  <%= f.submit %>
+</div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%- if controller_name != 'sessions' %>
+<div class="c-link">
+  <i class="fas fa-caret-right"></i> <%= link_to "ログインする", new_session_path(resource_name) %>
+</div>
+<% end -%>
+
+<%#= render "devise/shared/links" %>

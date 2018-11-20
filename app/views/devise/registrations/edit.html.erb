@@ -1,82 +1,39 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<style>
-table {
-  width: 980px;
-  margin: auto;
-  font-size: 12px;
-}
-th {
-  font-weight: bold;
-  width: 10%;
-  padding: 12px;
-}
-td {
-  width: 90%;
-  padding: 12px;
-}
-</style>
+<h2 class="c-title">編集</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-<%= devise_error_messages! %>
+  <%= devise_error_messages! %>
+  <dl class="p-table">
+    <dt><%= f.label :email %></dt>
+    <dd><%= f.email_field :email, autocomplete: "email" %></dd>
 
-<table>
-  <tr>
-    <th><%= f.label :email %></th>
-    <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
-  </tr>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <dt>Currently waiting confirmation for: <%= resource.unconfirmed_email %></dt>
+    <% end %>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-  <tr>
-    <th>
-      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-    </th>
-  </tr>
-  <% end %>
-
-  <tr>
-    <th>
+    <dt>
       <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
       <%= f.password_field :password, autocomplete: "new-password" %>
-    </th>
-    <td>
       <% if @minimum_password_length %>
-      <br />
       <em><%= @minimum_password_length %> characters minimum</em>
       <% end %>
-    </td>
-  </tr>
+    </dt>
 
-  <tr>
-    <th><%= f.label :password_confirmation %></th>
-    <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
-  </tr>
+    <dt>表示名</dt>
+    <dd><%= f.text_field :name %></dd>
 
-  <tr>
-    <th><%= f.label :name %></th>
-    <td><%= f.text_field :name %></td>
-  </tr>
+    <dt>Monofy ID</dt>
+    <dd><%= f.text_field :monofy_id %></dd>
 
+    <dt>プロフィール</dt>
+    <dd><%= f.text_area :profile %></dd>
 
-  <tr>
-    <th><%= f.label :profile %></th>
-    <td><%= f.text_area :profile %></td>
-  </tr>
+    <dt>アイコン</dt>
+    <dd><%= f.file_field :image %></dd>
+  </dl>
 
-  <tr>
-    <th></th>
-    <td><%= f.file_field :image %></td>
-  </tr>
+    <%= f.submit "更新する", class: "c-btn" %>
+  <% end %>
 
-</table>
+  <p><%= button_to "削除", registration_path(resource_name), class: "c-btn", data: { confirm: "削除しますか？一度削除すると今まで投稿した内容も削除されます。" }, method: :delete %></p>
 
-<div class="actions">
-  <%= f.submit "Update" %>
-</div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+  <%= link_to "戻る", :back, class: "c-btn--normal" %>
