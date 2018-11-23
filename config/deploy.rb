@@ -48,7 +48,7 @@ set :application, 'monofy'
 
 # cloneするgitのレポジトリ
 # 1-3で設定したリモートリポジトリのurl
-set :repo_url, 'git@github.com:y-onishi4400/monofy.git'
+set :repo_url, 'https://github.com/y-onishi4400/monofy.git'
 
 # deployするブランチ。デフォルトはmasterなのでなくても可。
 set :branch, 'master'
