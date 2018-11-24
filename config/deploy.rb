@@ -65,6 +65,8 @@ set :linked_files, fetch(:linked_files, []).push('config/secrets.yml')
 # シンボリックリンクをはるフォルダ
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 
+set :default_env, { path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH" }
+
 # 保持するバージョンの個数
 set :keep_releases, 5
 

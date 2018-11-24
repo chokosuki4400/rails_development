@@ -59,6 +59,7 @@ gem 'rails-i18n'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'unicorn'
+gem 'unicorn-rails'
 
 gem 'capistrano'
 gem 'capistrano-bundler'
