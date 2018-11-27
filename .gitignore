@@ -18,10 +18,13 @@
 !/storage/.keep
 
 /node_modules
-/yarn-error.log
+/frontend/node_modules/
 
 /public/assets
 .byebug_history
+
+!/app/assets/javascripts/.keep
+/app/assets/javascripts
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
