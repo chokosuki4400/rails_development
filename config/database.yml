@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: monofy
+  host: <%= ENV['DATABASE_HOST'] %>
   username: <%= ENV['DATABASE_USERNAME'] %>
   password: <%= ENV['DATABASE_PASSWORD'] %>
