@@ -49,7 +49,7 @@ gem 'twitter'
 # 画像アップロード
 gem 'carrierwave'
 gem 'fog-aws'
-gem 'rmagick'
+# gem 'rmagick'
 
 # 自動リンク生成
 gem 'rinku'
