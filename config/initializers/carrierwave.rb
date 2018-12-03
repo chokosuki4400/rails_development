@@ -25,3 +25,5 @@ CarrierWave.configure do |config|
     # config.storage = :file
   # end
 end
+
+# # CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/
