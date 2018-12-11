@@ -1,5 +1,5 @@
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "M PLUS 1p", "Helvetica Neue", "Yu Gothic", YuGothic, Verdana, Meiryo, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Noto Sans JP", "Helvetica Neue", "Yu Gothic", YuGothic, Verdana, Meiryo, sans-serif;
   line-height: 1.6;
   font-size: 16px;
   word-wrap : break-word;
@@ -55,8 +55,9 @@ img {
 }
 
 #error_explanation {
+  margin-top: 8px;
   color: red;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: bold;
 
   h2 {

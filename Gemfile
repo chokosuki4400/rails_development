@@ -50,7 +50,7 @@ gem 'twitter'
 gem 'carrierwave'
 gem 'carrierwave-aws'
 # gem 'fog'
-gem 'fog-aws'
+# gem 'fog-aws'
 # gem 'rmagick'
 
 # 自動リンク生成

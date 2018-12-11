@@ -18,7 +18,7 @@ CarrierWave.configure do |config|
       # 今回はIAM ロールを使用するため記載しない
       access_key_id:     ENV.fetch('AWS_ACCESS_KEY_ID'),
       secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY'),
-      region: ENV['AWS_REGION']
+      region: ENV.fetch('AWS_REGION')
     }
   # else
     # テスト時はローカルにファイルを保存する
@@ -26,4 +26,4 @@ CarrierWave.configure do |config|
   # end
 end
 
-# # CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/
+CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/

@@ -3,31 +3,32 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 <%= devise_error_messages! %>
 
-<dl class="p-table">
+<div class="p-form--edit">
 
-  <dt><%= f.label :name %></dt>
-  <dd><%= f.text_field :name %></dd>
+  <div class="c-form-input-text">
+    <%= f.text_field :name, placeholder: "表示する名前" %>
+  </div>
 
-  <dt><%= f.label :monofy_id %></dt>
-  <dd><%= f.text_field :monofy_id %></dd>
+  <div class="c-form-input-text">
+    <%= f.text_field :monofy_id, placeholder: "Monofy ID" %>
+  </div>
 
-  <dt><%= f.label :email %></dt>
-  <dd><%= f.email_field :email, autocomplete: "email" %></dd>
+  <div class="c-form-input-text">
+    <%= f.email_field :email, placeholder: "メールアドレス" %>
+  </div>
 
-  <dt><%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %>
-  </dt>
-  <dd><%= f.password_field :password, autocomplete: "new-password" %></dd>
+  <div class="c-form-input-text">
+    <%= f.password_field :password, placeholder: "パスワード（6文字以上）" %>
+  </div>
 
-  <dt><%= f.label :password_confirmation %></dt>
-  <dd><%= f.password_field :password_confirmation, autocomplete: "new-password" %></dd>
+  <div class="c-form-input-text">
+    <%= f.password_field :password_confirmation, placeholder: "パスワード（確認用）" %>
+  </div>
 
-</dl>
+</div>
 
-<div class="c-btn">
-  <%= f.submit %>
+<div class="c-btn--accent">
+  <%= f.submit "登録する" %>
 </div>
 <% end %>
 

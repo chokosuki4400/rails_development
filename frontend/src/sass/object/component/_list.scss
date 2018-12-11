@@ -2,6 +2,7 @@
 	&__item {
 		@include fontsize(14);
 		margin: 8px 0 0;
+		font-weight: bold;
 
 		&:first-child {
 			margin: 0;

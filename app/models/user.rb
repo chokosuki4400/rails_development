@@ -21,7 +21,7 @@ class User < ApplicationRecord
       user.consumer_secret = auth.extra.access_token.consumer.secret
       user.access_token = auth['credentials']['token']
       user.access_token_secret = auth['credentials']['secret']
-      user.image = auth['info']['image']
+      user.remote_image_url = auth['info']['image']
       user.profile = auth['info']['description']
     end
   end

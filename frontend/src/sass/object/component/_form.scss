@@ -1,41 +1,171 @@
-.c-form-checkbox {
-	margin: 16px 0 0;
+.c-form-input {
 	@include fontsize(14);
+	border-bottom: 1px solid $darkgreyC3;
 
-	#user_remember_me + label {
-		padding-left: 24px;
-		position:relative;
-	}
+	.c-text {
+		// color: $color-gray-6;
+		@include fontsize(12);
+		padding-bottom: 4px;
 
-	label {
-		&:before {
-			content: "";
-			display: block;
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 15px;
-			height: 15px;
-			border: 1px solid #999;
-			border-radius: 50%;
+		&--bold {
+			@include fontsize(13);
+			padding: 8px 2.125%;
+
 		}
-	}
-
-	#user_remember_me {
-		&:checked {
-			+ label {
-				&:after {
-					content: "";
-					display: block;
-					position: absolute;
-					top: 3px;
-					left: 3px;
-					width: 11px;
-					height: 11px;
-					background: $defaultColor;
-					border-radius: 50%;
-				}
-			}
+		&--attention {
+			font-weight: bold;
 		}
 	}
 }
+
+.c-form-input-text {
+
+	@extend .c-form-input;
+
+	input {
+		width: 100%;
+		@include fontsize(14);
+		padding: 24px;
+		color: $darkgray47;
+	}
+}
+
+.c-form-input-textarea {
+
+	@extend .c-form-input;
+
+	textarea {
+		width: 100%;
+		height: 120px;
+		// border: 1px solid $color-gray-c;
+		padding: 8px;
+	}
+
+	&__inner {
+		display: flex;
+		justify-content: space-between;
+	}
+}
+
+.c-form-pulldown {
+
+	@extend .c-form-input;
+
+	li {
+		position: relative;
+
+		&::after {
+			// @include background-fontAwesome($accentcolor, "\f107");
+			top: 0;
+			right: 8px;
+			@include fontsize(20);
+		}
+	}
+
+	select {
+		width: 100%;
+		// border: 1px solid $color-gray-c;
+		@include fontsize(13);
+		padding: 6px 4px;
+	}
+
+}
+
+.c-form-radio {
+
+	@extend .c-form-input;
+
+	&__item {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin-top: 4px;
+
+		.radio-btn {
+			// background: $color-gray-f4;
+			// border: 1px solid $color-gray-c;
+			height: 32px;
+		}
+
+		input + label {
+			position:relative;
+			display: block;
+			top: -17px;
+			padding-left: 36px;
+			@include fontsize(13);
+
+			&:before {
+				content: "";
+				display: block;
+				position: absolute;
+				top: 3px;
+				left: 8px;
+				width: 11px;
+				height: 11px;
+				// border: 1px solid $color-gray-a1;
+				border-radius: 50%;
+			}
+		}
+
+		input:checked + label::after{
+			content: "";
+			display: block;
+			position: absolute;
+			top: 6px;
+			left: 11px;
+			width: 7px;
+			height: 7px;
+			// background: $accentcolor;
+			border-radius: 50%;
+		}
+
+		> * {
+			width: 49%;
+		}
+	}
+}
+
+.c-form-input-file {
+	@extend .c-form-input;
+
+	input {
+		margin-top: 8px;
+		@include fontsize(12);
+	}
+
+}
+
+.example-text {
+	@include fontsize(12);
+
+
+	a {
+		// color: $linkcolor;
+		text-decoration: underline;
+	}
+}
+
+.counter-text {
+	position: relative;
+	@include fontsize(12);
+	// color: $color-gray-a1;
+	text-align: right;
+
+	&::before {
+		content: "残り";
+	}
+
+	&::after {
+		content: "文字";
+	}
+}
+
+.error-text {
+	// color: $errorcolor;
+	@include fontsize(12);
+	display: none;
+}
+
+
+
+

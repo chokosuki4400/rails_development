@@ -3,6 +3,7 @@
   &__submit,
   &__entry {
     &:disabled {
+      border-radius: 100px;
       background: #ccc;
       cursor: auto;
     }
