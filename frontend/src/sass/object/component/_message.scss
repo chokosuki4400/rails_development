@@ -14,10 +14,14 @@
 
 		&__title {
 			@include fontsize(14);
+			color: $darkgray47;
+			font-weight: bold;
 		}
+
 		&__btn {
 			@include fontsize(12);
 			text-align: right;
+			color: $darkgreyC3;
 		}
 	}
 }
