@@ -1,10 +1,16 @@
 <%#= render "shared/errors", obj: @entry %>
 
 <div class="c-input">
-  <p class="c-input__text">質問の入力はここから</p>
+
   <% if current_user && @message.message_text %>
+  <h3 class="c-batch--disabled">
+		<span>リクエスト</span>
+	</h3>
   <div class="c-input__box"><%= form.text_area :message_text, :readonly => true %></div>
   <% else %>
+  <h3 class="c-batch--secondary">
+		<span>リクエストを送る</span>
+	</h3>
   <div class="c-input__box"><%= form.text_area :message_text %></div>
   <% end %>
 </div>
@@ -12,14 +18,11 @@
 <% if current_user && @message.message_text %>
 
 <div class="c-input">
-  <p class="c-input__text">返答の入力はここから</p>
+  <h3 class="c-batch--secondary">
+		<span>アンサー</span>
+	</h3>
   <div class="c-input__box"><%= form.text_area :answer_text, id: "c-validation__area", class: "form-control" %></div>
   <p id="c-validation__text"><span id="c-validation__count">0</span>/238</p>
-</div>
-
-<div class="c-input">
-  <p class="c-input__text">Music URLの入力はここから</p>
-  <div class="c-input__box"><%= form.text_area :music_url %></div>
 </div>
 
 <% if current_user.provider === "twitter" %>

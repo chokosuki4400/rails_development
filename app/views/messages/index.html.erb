@@ -3,14 +3,16 @@
 </p> -->
 
 <%= form_for [@user, @message], url: user_messages_path do |form| %>
-	<%= render "form", form: form %>
-	<div class="c-btn">
+<%= render "form", form: form %>
+<div class="c-btn--accent">
 	<%= form.submit id: "c-validation__entry" %>
 </div>
 <% end %>
 
 <div class="p-message">
-	<h3 class="c-title--middle"><%=@user.monofy_id%>さんへの質問</h3>
+	<h3 class="c-batch--secondary">
+		<span>届いたリクエスト</span>
+	</h3>
 
 	<% if @messages.present? %>
 	<ul class="c-message">
@@ -22,10 +24,14 @@
 			<% end %>
 		</li>
 		<% end %>
+		<% else %>
+		<li class="c-message__item">
+			<%= link_to user_messages_path(@user.monofy_id), class: "c-message__item__link", data: {"turbolinks"=>false} do %>
+			<p><%=@user.name%>さんにリクエストを送ろう！</p>
+			<% end %>
+		</li>
 	</ul>
-	<%#= will_paginate @messages %>
-	<% else %>
-	<p>記事がありません。</p>
 	<% end %>
+	<%#= will_paginate @messages %>
 
 </div>

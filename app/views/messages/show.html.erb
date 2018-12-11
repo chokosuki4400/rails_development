@@ -1,3 +1,7 @@
+<h3 class="c-batch--secondary">
+	<span>届いたリクエスト</span>
+</h3>
+
 <% if @message.answer_text || @message.music_url %>
 <div class="c-answer__item">
 	<h2 class="c-answer__item__text"><%= @user.monofy_id %>さんの回答</h2>
@@ -7,9 +11,9 @@
 	<% end %>
 	<%if @message.music_url %>
 	<!-- <p class="c-answer__item__link">
-		<a href="<%= @message.music_url %>" target="_blank"><%= @message.music_url %></a>
-	</p> -->
-	<% end %>
+	<a href="<%= @message.music_url %>" target="_blank"><%= @message.music_url %></a>
+</p> -->
+<% end %>
 </div>
 <% end %>
 
@@ -22,8 +26,8 @@
 </div>
 
 <% if current_user == @message.author %>
-<div class="c-btn">
-	<%= link_to "回答する", edit_user_message_path(@user.monofy_id, @message), data: {"turbolinks"=>false} %>
-</div>
+	<div class="c-btn--accent u-mt25">
+		<%= link_to "回答する", edit_user_message_path(@user.monofy_id, @message), data: {"turbolinks"=>false} %>
+	</div>
 <% end %>
 

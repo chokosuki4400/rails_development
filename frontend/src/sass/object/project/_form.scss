@@ -1,0 +1,31 @@
+.p-form {
+	width: 100%;
+	@include fontsize(12);
+
+	dt {
+		width: 100%;
+		margin: 16px 0 0;
+		font-weight: bold;
+	}
+
+	dd {
+		width: 100%;
+		margin: 8px 0 0;
+		// padding: 8px;
+		// border: 1px solid $darkgray9B;
+	}
+
+	button, input, select, textarea {
+		width: 100%;
+		padding: 8px;
+		border: 1px solid $darkgray9B;
+	}
+
+	textarea {
+		resize: vertical;
+	}
+}
+
+.p-form--edit {
+	margin-bottom: 40px;
+}
