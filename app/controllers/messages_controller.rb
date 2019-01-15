@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class MessagesController < ApplicationController
+  include ImagesHelper
   before_action :set_twitter_client
 
   # 記事一覧
@@ -46,6 +47,7 @@ class MessagesController < ApplicationController
     # @message.author = User.where(:id => params[:user_id]).first
     @message.author = User.find_by(monofy_id: params[:user_monofy_id])
 
+
     # ipを保存
     @message.customer_ip = request.remote_ip
 
@@ -53,6 +55,8 @@ class MessagesController < ApplicationController
     @message.url_token = SecureRandom.hex(10)
 
     if @message.save
+      ImagesHelper.build('何かしらの文字列を合成してみる').tempfile.open.read
+      ImagesHelper.write(@message.message_text)
       redirect_to controller: :messages, action: :index
     else
       render 'new'
