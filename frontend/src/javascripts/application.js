@@ -15,8 +15,11 @@ var charcount = function (str) {
 
 window.onload = function(){
 
+  // リクエストを送る
   var entryTextArea = document.getElementById("message_message_text");
   var entrySubmitBtn = document.getElementById("c-validation__entry");
+  var checkTextEntry = document.getElementById("c-validation__count-entry");
+
 
   if(entryTextArea != null && entrySubmitBtn != null) {
     entrySubmitBtn.disabled = true;
@@ -24,15 +27,22 @@ window.onload = function(){
     entryTextArea.addEventListener("keyup",function(){
       var entryTextValue = entryTextArea.value;
       var entryTextCount = charcount(entryTextValue);
+      checkTextEntry.innerHTML = entryTextCount;
 
       if(entryTextCount == 0 ){
+        entryTextArea.style.borderColor = "red";
+        entrySubmitBtn.disabled = true;
+      }else if(entryTextCount > 140){
+        entryTextArea.style.borderColor = "red";
         entrySubmitBtn.disabled = true;
       }else{
+        entryTextArea.style.borderColor = "#4E84FF";
         entrySubmitBtn.disabled = false;
       }
     });
   }
 
+  // アンサー
   var textArea = document.getElementById("c-validation__area");
   var checkText = document.getElementById("c-validation__count");
   var submitBtn = document.getElementById("c-validation__submit");
