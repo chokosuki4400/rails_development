@@ -2,6 +2,7 @@
 
 class Message < ApplicationRecord
   belongs_to :author, class_name: 'User', foreign_key: 'user_id'
+  mount_uploader :message_image, ImageUploader
 
   validates :message_text, presence: true, length: { minimum: 1 }
   validates :answer_text, length: { maximum: 238 }

@@ -7,6 +7,7 @@ class CreateMessages < ActiveRecord::Migration[5.2]
       t.string :url_token, null: false, unique: true
       t.string :customer_ip
       t.text :message_text, null: false
+      t.string :message_image
       t.text :answer_text
       t.text :music_url
       t.boolean :twitter_flag, null: false, default: 0

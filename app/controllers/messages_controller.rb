@@ -47,16 +47,17 @@ class MessagesController < ApplicationController
     # @message.author = User.where(:id => params[:user_id]).first
     @message.author = User.find_by(monofy_id: params[:user_monofy_id])
 
-
     # ipを保存
     @message.customer_ip = request.remote_ip
 
     # ハッシュを保存
     @message.url_token = SecureRandom.hex(10)
 
+    ImagesHelper.build(@message.message_text).tempfile.open.read
+    ImagesHelper.write(@message.message_text)
+    Rails.logger.debug(ImagesHelper)
+
     if @message.save
-      ImagesHelper.build('何かしらの文字列を合成してみる').tempfile.open.read
-      ImagesHelper.write(@message.message_text)
       redirect_to controller: :messages, action: :index
     else
       render 'new'
@@ -85,7 +86,7 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:monofy_id, :url_token, :customer_ip, :message_text, :answer_text, :music_url, :status, :twitter_flag)
+    params.require(:message).permit(:monofy_id, :url_token, :customer_ip, :message_text, :message_image, :answer_text, :music_url, :status, :twitter_flag)
   end
 
   def set_twitter_client

@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2018_09_12_063302) do
     t.string "url_token", null: false
     t.string "customer_ip"
     t.text "message_text", null: false
+    t.string "message_image"
     t.text "answer_text"
     t.text "music_url"
     t.boolean "twitter_flag", default: false, null: false
