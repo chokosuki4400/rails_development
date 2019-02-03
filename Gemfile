@@ -49,7 +49,7 @@ gem 'twitter'
 # 画像アップロード
 gem 'carrierwave'
 gem 'carrierwave-aws'
-# gem 'fog'
+gem 'fog'
 # gem 'fog-aws'
 # gem 'rmagick'
 

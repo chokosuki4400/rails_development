@@ -2,25 +2,20 @@
 	<span>届いたリクエスト</span>
 </h3>
 
-<% if @message.answer_text || @message.music_url %>
+<% if @message.answer_text %>
 <div class="c-answer__item">
 	<h2 class="c-answer__item__text"><%= @user.monofy_id %>さんの回答</h2>
 	<%if @message.answer_text %>
 
 	<p class="c-answer__item__title"><%= raw Rinku.auto_link(@message.answer_text, :all, 'target="_blank"') %></p>
 	<% end %>
-	<%if @message.music_url %>
-	<!-- <p class="c-answer__item__link">
-	<a href="<%= @message.music_url %>" target="_blank"><%= @message.music_url %></a>
-</p> -->
-<% end %>
 </div>
 <% end %>
 
 <div class="c-message">
 	<div class="c-message__item">
 		<div class="c-message__item__link">
-			<p class="c-message__item__title"><%= @message.message_text %></p>
+			<%= image_tag @message.message_image, alt: @message.message_text %>
 		</div>
 	</div>
 </div>
