@@ -223,13 +223,15 @@ class MessagesController < ApplicationController
       # ⑨-14 バケットの指定・URLの設定
       bucket = storage.directories.get(ENV['AWS_S3_BUCKET'])
       # ⑨-15 保存するディレクトリ、ファイル名の指定（ファイル名は投稿id.pngとしています）
-      png_path = 'images/' + id.to_s + '.png'
+      image_name = SecureRandom.hex(10)
+      png_path = 'uploads/entry/' + image_name + '.png'
       image_uri = image.path
       file = bucket.files.create(key: png_path, public: true, body: open(image_uri))
       @message.message_image = 'https://s3-ap-northeast-1.amazonaws.com/' + ENV['AWS_S3_BUCKET'] + "/" + png_path
     when 'development'
       bucket = storage.directories.get(ENV['AWS_S3_BUCKET'])
-      png_path = 'images/' + id.to_s + '.png'
+      image_name = SecureRandom.hex(10)
+      png_path = 'uploads/entry/' + image_name + '.png'
       image_uri = image.path
       file = bucket.files.create(key: png_path, public: true, body: open(image_uri))
       @message.message_image = 'https://s3-ap-northeast-1.amazonaws.com/'+ ENV['AWS_S3_BUCKET'] + "/" + png_path
