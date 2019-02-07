@@ -10,12 +10,12 @@ class MessagesController < ApplicationController
       # user_idのハッシュがあった時
       @user = User.find(params[:user_id])
       @user = User.find_by(monofy_id: params[:user_monofy_id])
-      @messages = @user.messages.where(status: false).order(created_at: :desc)
+      @messages = @user.messages.where(status: false).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
     else
       @user = User.find_by(monofy_id: params[:user_monofy_id])
       # @messages = Message.all
       @message = Message.new
-      @messages = @user.messages.where(status: false).order(created_at: :desc)
+      @messages = @user.messages.where(status: false).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
     end
     # @messages = @messages.readable_for(current_user)
     # .order(posted_at: :desc).paginate(page: params[:page], per_page: 20)
