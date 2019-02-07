@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class MessagesController < ApplicationController
-  include ImagesHelper
   before_action :set_twitter_client
   # before_action :new_message, only: [:show, :new]
 
@@ -31,23 +30,17 @@ class MessagesController < ApplicationController
     @message = Message.find_by(url_token: params[:url_token])
   end
 
-  # # 新規登録フォーム
+  # 新規登録フォーム
   def new
     @user = User.find_by(monofy_id: params[:user_monofy_id])
     @message = Message.new
   end
-  #
-  # # 編集
+
+  # 編集
   def edit
     @user = User.find_by(monofy_id: params[:user_monofy_id])
     @message = current_user.messages.find_by(url_token: params[:url_token])
   end
-
-  # def new
-  # end
-  #
-  # def edit
-  # end
 
   def create
     @message = Message.new(message_params)
@@ -67,35 +60,12 @@ class MessagesController < ApplicationController
     end
     make_picture(next_id)
 
-    # ImagesHelper.build(@message.message_text).tempfile.open.read
-    # ImagesHelper.write(@message.message_text)
-
     if @message.save
-      redirect_to controller: :messages, action: :index
+      redirect_to controller: :messages, action: :index, notice: '作成しました。'
     else
       render 'new'
     end
   end
-
-  # ⑤createアクションを修正
-  # def create
-  #   # ⑤-1 @postに入力したcontent、kindが入っています。（id、pictureはまだ入っていません）
-  #   @post = Post.new(post_params)
-  #   # ⑤-2 idとして採番予定の数字を作成（現在作成しているidの次、存在しない場合は1を採番）
-  #   if Post.last.present?
-  #     next_id = Post.last.id + 1
-  #   else
-  #     next_id = 1
-  #   end
-  #   # ⑤-3 画像の生成メソッド呼び出し（画像のファイル名にidを使うため、引数として渡す）
-  #   make_picture(next_id)
-  #   if @post.save
-  #     # ⑤-4 確認画面へリダイレクト
-  #     redirect_to confirm_path(@post)
-  #   else
-  #     render :new
-  #   end
-  # end
 
   def update
     @message = current_user.messages.find_by(url_token: params[:url_token])
@@ -103,8 +73,8 @@ class MessagesController < ApplicationController
 
     if @message.save
       # flagが立った時、ツイートする
-      @twitter.update("#{@message.answer_text}\r#{@message.music_url}") if @message.twitter_flag
-      redirect_to controller: :messages, action: :show
+      @twitter.update("#{@message.answer_text}\r#{@message.music_url}") if @message.twitter_flag && @message.status.blank?
+      redirect_to controller: :messages, action: :index, notice: '更新しました。'
     else
       render 'edit'
     end
@@ -117,15 +87,6 @@ class MessagesController < ApplicationController
   end
 
   private
-
-  def set_post
-    @message = Message.find(params[:id])
-  end
-
-  # ⑧メソッド追加
-  # def new_message
-  #   @message = Message.new
-  # end
 
   def message_params
     params.require(:message).permit(:monofy_id, :url_token, :customer_ip, :message_text, :message_image, :answer_text, :music_url, :status, :twitter_flag)
