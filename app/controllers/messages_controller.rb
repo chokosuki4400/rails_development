@@ -3,6 +3,7 @@
 class MessagesController < ApplicationController
   before_action :set_twitter_client
   # before_action :new_message, only: [:show, :new]
+  $description = "モノフィは、人から褒められてテンションを上がることができるサービスです。"
 
   # 記事一覧
   def index

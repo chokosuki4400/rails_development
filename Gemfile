@@ -62,6 +62,9 @@ gem 'will_paginate'
 # 日本語化
 gem 'rails-i18n'
 
+# メタタグ機能
+gem 'meta-tags'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
