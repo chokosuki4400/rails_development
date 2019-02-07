@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     flash[:notice] = 'ログイン済ユーザーのみ記事の詳細を確認できます' unless user_signed_in?
     @user = current_user
     # @messages = Message.all
-    @messages = @user.messages.order(created_at: :desc)
+    @messages = @user.messages.where(status: false).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
   end
 
   def show
