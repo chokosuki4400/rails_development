@@ -39,5 +39,14 @@
 </div>
 <% end %>
 
+<div class="c-switch">
+  <%= form.label :status, class: "c-switch__lable" do %>
+  <%= form.check_box :status, :as => :boolean, class: "c-switch__input" %>
+  <span class="c-switch__content"></span>
+  <span class="c-switch__circle"></span>
+  <% end %>
+  <p class="c-switch__text">削除する</p>
+</div>
+
 <% end %>
 
