@@ -1,0 +1,36 @@
+.p-pager {
+	text-align: center;
+	margin-top: 40px;
+	@include fontsize(12);
+
+	.previous_page,
+	.next_page,
+	.current,
+	a {
+		margin: 0 2px;
+		// padding: 8px 16px;
+		text-align: center;
+		border-radius: 40px;
+		border: 1px solid #ededed;
+		color: #444750;
+		background: #ffffff;
+		display: inline-block;
+		width: 40px;
+		height: 40px;
+		line-height: 40px;
+	}
+
+	.previous_page {
+		border-left: 1px solid #dcd1c0;
+	}
+
+	.disabled {
+		display: none;
+	}
+
+	.current {
+		// background-image: linear-gradient(30deg, #1d36c4 0%, #4cc3e5 100%) !important;
+		background: #ededed;
+		// color: #ffffff;
+	}
+}
