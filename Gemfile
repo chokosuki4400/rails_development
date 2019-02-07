@@ -56,6 +56,9 @@ gem 'fog'
 # 自動リンク生成
 gem 'rinku'
 
+# ページャー
+gem 'will_paginate'
+
 # 日本語化
 gem 'rails-i18n'
 

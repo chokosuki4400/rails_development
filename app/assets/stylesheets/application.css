@@ -534,6 +534,31 @@ pre, code, kbd, samp, tt {
   margin: 24px 0 0;
   padding: 24px 0 0; }
 
+.p-pager {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 1.2rem; }
+  .p-pager .previous_page,
+  .p-pager .next_page,
+  .p-pager .current,
+  .p-pager a {
+    margin: 0 2px;
+    text-align: center;
+    border-radius: 40px;
+    border: 1px solid #ededed;
+    color: #444750;
+    background: #ffffff;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px; }
+  .p-pager .previous_page {
+    border-left: 1px solid #dcd1c0; }
+  .p-pager .disabled {
+    display: none; }
+  .p-pager .current {
+    background: #ededed; }
+
 .p-profile {
   text-align: center;
   background: #ffffff;
