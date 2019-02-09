@@ -1,3 +1,5 @@
+<% set_meta_tags title: @user.name + 'の質問一覧', description: @user.name + $description %>
+
 <%= form_for [@user, @message], url: user_messages_path do |form| %>
 <%= render "form", form: form %>
 <p><%= form.submit id: "c-validation__entry" %></p>

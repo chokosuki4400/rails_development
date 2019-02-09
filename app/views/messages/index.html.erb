@@ -1,6 +1,4 @@
-<!-- <p>
-<%#= link_to "質問の作成", :new_user_message %>
-</p> -->
+<% set_meta_tags title: @user.name + 'の質問一覧', description: @user.name + $description %>
 
 <%= form_for [@user, @message], url: user_messages_path do |form| %>
 <%= render "form", form: form %>
@@ -22,7 +20,6 @@
 			<p class="c-message__item__title"><%= message.message_text %></p>
 			<p class="c-message__item__btn"><i class="fas fa-caret-right"></i> もっとみる</p>
 			<% end %>
-
 		</li>
 		<% end %>
 		<% else %>

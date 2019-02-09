@@ -1,14 +1,13 @@
+<% set_meta_tags title: @user.name + 'に届いた質問', description: @message.message_text + $description, og: { title: @message.message_text, image: @message.message_image } %>
+
 <h3 class="c-batch--secondary">
 	<span>届いたリクエスト</span>
 </h3>
 
 <% if @message.answer_text %>
 <div class="c-answer__item">
-	<h2 class="c-answer__item__text"><%= @user.monofy_id %>さんの回答</h2>
-	<%if @message.answer_text %>
-
+	<h2 class="c-answer__item__text"><%= @user.name %>さんの回答</h2>
 	<p class="c-answer__item__title"><%= raw Rinku.auto_link(@message.answer_text, :all, 'target="_blank"') %></p>
-	<% end %>
 </div>
 <% end %>
 

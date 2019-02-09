@@ -1,3 +1,5 @@
+<% set_meta_tags title: @user.name + 'のマイページ', description: @user.name + $description, canonical: request.host_with_port, og: { url: request.host_with_port } %>
+
 <%if user_signed_in? %>
 <div class="p-profile">
 	<div class="c-img--circle" style="background-image: url(<%= current_user.image %>)"></div>

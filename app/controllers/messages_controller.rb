@@ -3,6 +3,7 @@
 class MessagesController < ApplicationController
   before_action :set_twitter_client
   # before_action :new_message, only: [:show, :new]
+  $description = "なんでたッ!?は、匿名の人からツッコミの一言をもらって、あなたがボケを考えて答えることのできるサービスです。ボケとツッコミのワンセットを完成させてみんなで楽しんで下さい。"
 
   # 記事一覧
   def index
