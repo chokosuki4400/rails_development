@@ -17,12 +17,11 @@ module ApplicationHelper
 
   def default_meta_tags
     {
-      site: 'モノフィ-Monofy-',
+      site: 'なんでたッ!?-Nandeda-',
       title: '',
       reverse: true,
       charset: 'utf-8',
-      description: 'モノフィは、人から褒められてテンションを上がることができるサービスです。',
-      keywords: 'モノフィ,テンション,嬉しい',
+      description: 'なんでたッ!?は、匿名の人からツッコミの一言をもらって、あなたがボケを考えて答えることのできるサービスです。ボケとツッコミのワンセットを完成させてみんなで楽しんで下さい。',
       canonical: request.original_url,
       separator: '|',
       icon: [
@@ -30,9 +29,9 @@ module ApplicationHelper
         # { href: image_url('icon.jpg'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/jpg' },
       ],
       og: {
-        site_name: 'モノフィ-Monofy-',
-        title: 'モノフィ-Monofy-',
-        description: 'モノフィは、人から褒められてテンションを上がることができるサービスです。',
+        site_name: 'なんでたッ!?-Nandeda-',
+        title: 'なんでたッ!?-Nandeda-',
+        description: 'なんでたッ!?は、匿名の人からツッコミの一言をもらって、あなたがボケを考えて答えることのできるサービスです。ボケとツッコミのワンセットを完成させてみんなで楽しんで下さい。',
         type: 'website',
         url: request.original_url,
         image: image_url('ogp.png'),
@@ -40,7 +39,7 @@ module ApplicationHelper
       },
       twitter: {
         card: 'summary_large_image',
-        site: '@bakyun_net',
+        site: '@Nandeda_com',
       }
     }
   end
