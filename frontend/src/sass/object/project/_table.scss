@@ -1,5 +1,6 @@
 .p-table {
 	width: 100%;
+	margin: 0 0 40px;
 	@include fontsize(12);
 
 	dt {
@@ -19,6 +20,7 @@
 		width: 100%;
 		padding: 8px;
 		border: 1px solid $darkgray9B;
+		background: #ffffff;
 	}
 
 	textarea {

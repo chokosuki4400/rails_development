@@ -1,10 +1,25 @@
+<h2 class="c-batch--secondary">
+  <span>使い方</span>
+</h2>
+<div class="p-page">
+  <h3 class="c-title--middle">１．ページを作成する</h3>
+  <p class="c-text">メッセージを受け取れるページを作成する</p>
+  <h3 class="c-title--middle">２．募集する</h3>
+  <p class="c-text">あなたのページができたら、みんなにお知らせしましょう！</p>
+  <h3 class="c-title--middle">３．回答する</h3>
+  <p class="c-text">あなたに対するメッセージが届いていたら、回答してみましょう！</p>
+  <p class="c-text">Twitterに投稿することもできます</p>
+</div>
+
 <ul class="p-home">
   <li class="c-btn--secondary">
-    <%= link_to "使い方",user_twitter_omniauth_authorize_path %>
+    <%= link_to "使い方",about_path %>
   </li>
 
   <%if user_signed_in? %>
-  <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか?' } %></li>
+  <li class="c-link">
+    <i class="fas fa-caret-right"></i> <%= link_to "ログアウトする", destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか?' } %>
+  </li>
   <% else %>
   <li class="c-btn--twitter">
     <%= link_to user_twitter_omniauth_authorize_path do %>

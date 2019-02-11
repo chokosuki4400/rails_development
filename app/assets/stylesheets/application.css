@@ -538,10 +538,12 @@ pre, code, kbd, samp, tt {
     max-width: 600px;
     margin: 0 auto; }
 
-.p-home li {
-  margin: 8px 0 0; }
-  .p-home li:first-child {
-    margin: 0; }
+.p-home {
+  margin: 40px 0 0; }
+  .p-home li {
+    margin: 20px 0 0; }
+    .p-home li:first-child {
+      margin: 0; }
 
 .p-message {
   border-top: 1px solid #C3C3C3;
@@ -612,6 +614,7 @@ pre, code, kbd, samp, tt {
 
 .p-table {
   width: 100%;
+  margin: 0 0 40px;
   font-size: 1.2rem; }
   .p-table dt {
     width: 100%;
@@ -623,7 +626,8 @@ pre, code, kbd, samp, tt {
   .p-table button, .p-table input, .p-table select, .p-table textarea {
     width: 100%;
     padding: 8px;
-    border: 1px solid #9B9B9B; }
+    border: 1px solid #9B9B9B;
+    background: #ffffff; }
   .p-table textarea {
     resize: vertical; }
 

@@ -1,41 +1,46 @@
 <% set_meta_tags title: @user.name + 'の編集ページ', description: @user.name + $description, canonical: request.host_with_port, og: { url: request.host_with_port } %>
 
-<h2 class="c-title">編集</h2>
+<h2 class="c-title">アカウントの編集</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <dl class="p-table">
-    <dt><%= f.label :email %></dt>
-    <dd><%= f.email_field :email, autocomplete: "email" %></dd>
+<%= devise_error_messages! %>
+<dl class="p-table">
+  <dt><%= f.label :email %></dt>
+  <dd><%= f.email_field :email, autocomplete: "email" %></dd>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <dt>Currently waiting confirmation for: <%= resource.unconfirmed_email %></dt>
-    <% end %>
-
-    <dt>
-      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
-      <% if @minimum_password_length %>
-      <em><%= @minimum_password_length %> characters minimum</em>
-      <% end %>
-    </dt>
-
-    <dt>表示名</dt>
-    <dd><%= f.text_field :name %></dd>
-
-    <dt>Monofy ID</dt>
-    <dd><%= f.text_field :monofy_id %></dd>
-
-    <dt>プロフィール</dt>
-    <dd><%= f.text_area :profile %></dd>
-
-    <dt>アイコン</dt>
-    <dd><%= f.file_field :image %></dd>
-  </dl>
-
-    <%= f.submit "更新する", class: "c-btn" %>
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+  <dt>Currently waiting confirmation for: <%= resource.unconfirmed_email %></dt>
   <% end %>
 
-  <p><%= button_to "削除", registration_path(resource_name), class: "c-btn", data: { confirm: "削除しますか？一度削除すると今まで投稿した内容も削除されます。" }, method: :delete %></p>
+  <dt>
+    <%= f.label :password %> <i>(変更したくない場合は空白のままにしてください。)</i><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+    <% if @minimum_password_length %>
+    <em><%= @minimum_password_length %> 文字以上</em>
+    <% end %>
+  </dt>
 
-  <%= link_to "戻る", :back, class: "c-btn--normal" %>
+  <dt>表示名</dt>
+  <dd><%= f.text_field :name %></dd>
+
+  <dt>Monofy ID</dt>
+  <dd><%= f.text_field :monofy_id %></dd>
+
+  <dt>プロフィール</dt>
+  <dd><%= f.text_area :profile %></dd>
+
+  <dt>アイコン</dt>
+  <dd><%= f.file_field :image %></dd>
+</dl>
+
+<div class="c-btn--accent">
+  <%= f.submit "更新する" %>
+</div>
+<% end %>
+<br>
+<div class="c-btn--normal">
+<%= link_to "戻る", :back %>
+</div>
+<br>
+
+<%= button_to "退会する", registration_path(resource_name), class: "c-link c-leave", data: { confirm: "退会しますか？一度退会すると今まで投稿した内容も削除されます。" }, method: :delete %>
