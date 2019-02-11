@@ -47,9 +47,17 @@ ActiveRecord::Schema.define(version: 2018_09_12_063302) do
     t.string "uid"
     t.string "provider"
     t.string "consumer_key"
+    t.string "encrypted_consumer_key"
+    t.string "encrypted_consumer_key_iv"
     t.string "consumer_secret"
+    t.string "encrypted_consumer_secret"
+    t.string "encrypted_consumer_secret_iv"
     t.string "access_token"
+    t.string "encrypted_access_token"
+    t.string "encrypted_access_token_iv"
     t.string "access_token_secret"
+    t.string "encrypted_access_token_secret"
+    t.string "encrypted_access_token_secret_iv"
     t.string "name", null: false
     t.string "monofy_id", null: false
     t.text "profile"
