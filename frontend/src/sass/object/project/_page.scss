@@ -1,0 +1,19 @@
+.p-page {
+  margin: 16px 0 0;
+  padding: 16px;
+  background: #ffffff;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 2px 4px hsla(0,0%,76%,.2);
+  box-shadow: 0 2px 4px hsla(0,0%,76%,.2);
+
+  .c-title--middle {
+    margin: 16px 0 8px;
+  }
+
+  .c-text {
+    margin: 8px 0;
+    &:first-child {
+      margin: 0;
+    }
+  }
+}

@@ -2,12 +2,12 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  border-top: 1px solid $darkgray1A;
+  border-top: 1px solid $darkgreyEC;
 
   &__item {
     text-align: center;
     width: 25%;
-    border-left: 1px solid $darkgray1A;
+    border-left: 1px solid $darkgreyEC;
 
     &:first-child {
       border-left: none;
@@ -17,6 +17,7 @@
       width: 100%;
       padding: 8px 0;
       display: block;
+      color: $darkgray66;
     }
   }
 }

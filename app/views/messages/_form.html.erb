@@ -4,7 +4,7 @@
 
   <% if current_user && @message.message_text %>
   <h3 class="c-batch--disabled">
-    <span>リクエスト</span>
+    <span>届いたリクエスト</span>
   </h3>
   <div class="c-input__box">
     <%= image_tag @message.message_image, alt: @message.message_text %>

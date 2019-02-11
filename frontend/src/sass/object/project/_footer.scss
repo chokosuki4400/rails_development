@@ -8,4 +8,16 @@
   a {
     color: #ffffff;
   }
+
+  &--small {
+    margin: 40px 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    li {
+      @include fontsize(12);
+      margin: 0 8px;
+    }
+  }
 }

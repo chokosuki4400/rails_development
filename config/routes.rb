@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'privacy', to: 'privacy#index'
+  get 'terms', to: 'terms#index'
   get 'logins/login'
   get 'logins/sign_up'
   # get 'home/index'
