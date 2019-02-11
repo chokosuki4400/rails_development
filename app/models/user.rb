@@ -7,6 +7,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable, omniauth_providers: [:twitter]
   has_many :messages, dependent: :destroy
   mount_uploader :image, ImageUploader
+  attr_encrypted :consumer_key, key: 'This is a key that is 256 bits!!'
+  attr_encrypted :consumer_secret, key: 'This is a key that is 256 bits!!'
+  attr_encrypted :access_token, key: 'This is a key that is 256 bits!!'
+  attr_encrypted :access_token_secret, key: 'This is a key that is 256 bits!!'
 
   # accepts_nested_attributes_for :question, update_only: true
 
