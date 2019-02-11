@@ -1,3 +1,21 @@
+<ul>
+	<li>
+		<%= link_to terms_path, class:'' do %>
+		<i class="fas fa-home"></i>利用規約
+		<% end %>
+	</li>
+	<li>
+		<%= link_to privacy_path, class:'' do %>
+		<i class="fas fa-home"></i>プライバシーポリシー
+		<% end %>
+	</li>
+	<li>
+		<a href="https://twitter.com/Nandeda_com" target="_blank">
+		<i class="fas fa-home"></i>公式Twitter
+		</a>
+	</li>
+</ul>
+
 <%if user_signed_in? %>
 <ul class="p-tab">
 	<li class="p-tab__item">
