@@ -1,0 +1,33 @@
+<%if user_signed_in? %>
+<ul class="p-tab">
+	<li class="p-tab__item">
+		<%= link_to root_path, class:'' do %>
+		<i class="fas fa-home"></i>
+		<% end %>
+	</li>
+	<li class="p-tab__item">
+		<%= link_to users_path, class:'' do %>
+		<i class="far fa-user"></i>
+		<% end %>
+	</li>
+
+	<li class="p-tab__item">
+		<%= link_to user_messages_path(current_user.monofy_id), class:'', data: {"turbolinks"=>false} do %>
+		<i class="far fa-envelope"></i>
+		<% end %>
+	</li>
+
+	<li class="p-tab__item">
+		<%= link_to user_messages_path(current_user.monofy_id), class:'', data: {"turbolinks"=>false} do %>
+		<i class="far fa-question-circle"></i>
+		<% end %>
+	</li>
+
+</ul>
+<% end %>
+
+<div class="p-footer">
+	<p class="p-footer__copy">
+		Copyright (C) 2018 <%= link_to "Nandeda", root_path %>
+	</p>
+</div>

@@ -2,7 +2,8 @@
   width: 100%;
   text-align: center;
   padding: 8px 0;
-  background: $primaryColor;
+  // background: $primaryColor;
+  border-bottom: 1px solid $darkgreyEC;
 
   &__inner {
     width: 92%;
