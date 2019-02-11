@@ -17,11 +17,11 @@ module ApplicationHelper
 
   def default_meta_tags
     {
-      site: 'なんでたッ!?-Nandeda-',
+      site: 'なんでだッ!?-Nandeda-',
       title: '',
       reverse: true,
       charset: 'utf-8',
-      description: 'なんでたッ!?は、匿名の人からツッコミの一言をもらって、あなたがボケを考えて答えることのできるサービスです。ボケとツッコミのワンセットを完成させてみんなで楽しんで下さい。',
+      description: 'なんでだッ!?は、匿名の人からツッコミの一言をもらって、あなたがボケを考えて答えることのできるサービスです。ボケとツッコミのワンセットを完成させてみんなで楽しんで下さい。',
       canonical: request.original_url,
       separator: '|',
       icon: [
@@ -29,9 +29,9 @@ module ApplicationHelper
         # { href: image_url('icon.jpg'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/jpg' },
       ],
       og: {
-        site_name: 'なんでたッ!?-Nandeda-',
-        title: 'なんでたッ!?-Nandeda-',
-        description: 'なんでたッ!?は、匿名の人からツッコミの一言をもらって、あなたがボケを考えて答えることのできるサービスです。ボケとツッコミのワンセットを完成させてみんなで楽しんで下さい。',
+        site_name: 'なんでだッ!?-Nandeda-',
+        title: 'なんでだッ!?-Nandeda-',
+        description: 'なんでだッ!?は、匿名の人からツッコミの一言をもらって、あなたがボケを考えて答えることのできるサービスです。ボケとツッコミのワンセットを完成させてみんなで楽しんで下さい。',
         type: 'website',
         url: request.original_url,
         image: image_url('ogp.png'),
