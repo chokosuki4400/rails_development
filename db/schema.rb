@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 2018_09_12_063302) do
     t.string "encrypted_access_token_secret"
     t.string "encrypted_access_token_secret_iv"
     t.string "name", null: false
-    t.string "monofy_id", null: false
+    t.string "nandeda_id", null: false
     t.text "profile"
     t.string "image"
     t.index ["email"], name: "index_users_on_email", unique: true

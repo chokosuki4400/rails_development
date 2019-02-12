@@ -30,7 +30,7 @@
 	<ul class="c-message">
 		<% @messages.each do |message| %>
 		<li class="c-message__item">
-			<%= link_to user_message_path(@user.monofy_id, message), class: "c-message__item__link" do %>
+			<%= link_to user_message_path(@user.nandeda_id, message), class: "c-message__item__link" do %>
 			<p class="c-message__item__title"><%= message.message_text %></p>
 			<p class="c-message__item__btn"><i class="fas fa-caret-right"></i> もっとみる</p>
 			<% end %>
@@ -38,7 +38,7 @@
 		<% end %>
 		<% else %>
 		<li class="c-message__item">
-			<%= link_to user_messages_path(current_user.monofy_id), class: "c-message__item__link", data: {"turbolinks"=>false} do %>
+			<%= link_to user_messages_path(current_user.nandeda_id), class: "c-message__item__link", data: {"turbolinks"=>false} do %>
 			<p><%=current_user.name%>さんにリクエストを送ろう！</p>
 			<% end %>
 		</li>

@@ -16,7 +16,7 @@
 	<ul class="c-message">
 		<% @messages.each do |message| %>
 		<li class="c-message__item">
-			<%= link_to user_message_path(@user.monofy_id, message), class: "c-message__item__link" do %>
+			<%= link_to user_message_path(@user.nandeda_id, message), class: "c-message__item__link" do %>
 			<% if message.answer_text %>
 			<p class="c-answer__item__text">回答済み</p>
 			<% end %>
@@ -27,7 +27,7 @@
 		<% end %>
 		<% else %>
 		<li class="c-message__item">
-			<%= link_to user_messages_path(@user.monofy_id), class: "c-message__item__link", data: {"turbolinks"=>false} do %>
+			<%= link_to user_messages_path(@user.nandeda_id), class: "c-message__item__link", data: {"turbolinks"=>false} do %>
 			<p><%=@user.name%>さんにリクエストを送ろう！</p>
 			<% end %>
 		</li>

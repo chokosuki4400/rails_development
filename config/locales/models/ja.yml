@@ -6,7 +6,7 @@ ja:
       user:
         name: 表示名
         email: メールアドレス
-        monofy_id: Monofy ID
+        nandeda_id: Nandeda ID
         password: パスワード
         password_confirmation: パスワード（確認用）
         remember_me: パスワードを記憶する

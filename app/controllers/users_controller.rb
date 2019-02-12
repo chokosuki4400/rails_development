@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
   def show
     # @user = User.find(params[:id])
-    @user = User.find_by(monofy_id: params[:monofy_id])
+    @user = User.find_by(nandeda_id: params[:nandeda_id])
     @messages = @user.messages.order(created_at: :desc)
   end
 end

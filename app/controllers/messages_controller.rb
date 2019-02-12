@@ -10,10 +10,10 @@ class MessagesController < ApplicationController
     if params[:user_id]
       # user_idのハッシュがあった時
       @user = User.find(params[:user_id])
-      @user = User.find_by(monofy_id: params[:user_monofy_id])
+      @user = User.find_by(nandeda_id: params[:user_nandeda_id])
       @messages = @user.messages.where(status: false).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
     else
-      @user = User.find_by(monofy_id: params[:user_monofy_id])
+      @user = User.find_by(nandeda_id: params[:user_nandeda_id])
       # @messages = Message.all
       @message = Message.new
       @messages = @user.messages.where(status: false).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
@@ -26,27 +26,27 @@ class MessagesController < ApplicationController
   def show
     # @message = Message.find(params[:id])
     # @user = User.where(:id => params[:user_id]).first
-    @user = User.find_by(monofy_id: params[:user_monofy_id])
+    @user = User.find_by(nandeda_id: params[:user_nandeda_id])
     # @message = Message.readable_for(@user).find(params[:id])
     @message = Message.find_by(url_token: params[:url_token])
   end
 
   # 新規登録フォーム
   def new
-    @user = User.find_by(monofy_id: params[:user_monofy_id])
+    @user = User.find_by(nandeda_id: params[:user_nandeda_id])
     @message = Message.new
   end
 
   # 編集
   def edit
-    @user = User.find_by(monofy_id: params[:user_monofy_id])
+    @user = User.find_by(nandeda_id: params[:user_nandeda_id])
     @message = current_user.messages.find_by(url_token: params[:url_token])
   end
 
   def create
     @message = Message.new(message_params)
     # @message.author = User.where(:id => params[:user_id]).first
-    @message.author = User.find_by(monofy_id: params[:user_monofy_id])
+    @message.author = User.find_by(nandeda_id: params[:user_nandeda_id])
 
     # ipを保存
     @message.customer_ip = request.remote_ip
@@ -90,12 +90,12 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:monofy_id, :url_token, :customer_ip, :message_text, :message_image, :answer_text, :music_url, :status, :twitter_flag)
+    params.require(:message).permit(:nandeda_id, :url_token, :customer_ip, :message_text, :message_image, :answer_text, :music_url, :status, :twitter_flag)
   end
 
   def set_twitter_client
     # @user = User.where(:id => params[:user_id]).first
-    @user = User.find_by(monofy_id: params[:user_monofy_id])
+    @user = User.find_by(nandeda_id: params[:user_nandeda_id])
     if @user.provider === 'twitter'
       @twitter = Twitter::REST::Client.new do |config|
         config.consumer_key        = @user.consumer_key

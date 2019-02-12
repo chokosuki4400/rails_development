@@ -18,7 +18,7 @@ class AddImageToUser < ActiveRecord::Migration[5.2]
     add_column :users, :encrypted_access_token_secret, :string
     add_column :users, :encrypted_access_token_secret_iv, :string
     add_column :users, :name, :string, null: false
-    add_column :users, :monofy_id, :string, null: false, unique: true
+    add_column :users, :nandeda_id, :string, null: false, unique: true
     add_column :users, :profile, :text
     add_column :users, :image, :string
   end

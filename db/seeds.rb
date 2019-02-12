@@ -18,7 +18,7 @@ images = ['https://c.okmusic.jp/news_items/images/252544/more_large.jpg?15210966
     password: 'password',
     encrypted_password: 'password',
     name: (names[idx]).to_s,
-    monofy_id: (email[idx]).to_s,
+    nandeda_id: (email[idx]).to_s,
     profile: "よくある#{names[idx]}です。",
     image: (images[idx]).to_s
   )
