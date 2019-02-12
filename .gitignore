@@ -31,3 +31,4 @@ public/uploads/*
 
 .DS_Store
 .env
+Gemfile.lock
