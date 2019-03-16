@@ -20,6 +20,7 @@ class MessagesController < ApplicationController
     end
     # @messages = @messages.readable_for(current_user)
     # .order(posted_at: :desc).paginate(page: params[:page], per_page: 20)
+    MessagesHelper.send
   end
 
   # 記事の詳細
