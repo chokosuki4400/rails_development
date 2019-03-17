@@ -7,7 +7,7 @@ module MessagesHelper
   class << self
 
     def send(address, username, hash, url)
-      from = SendGrid::Email.new(email: 'test@example.com')
+      from = SendGrid::Email.new(email: ENV['FROM_ADDRESS'])
       to = SendGrid::Email.new(email: address)
       subject = username + 'さん、あなたに質問が届きました！'
       hoge = address

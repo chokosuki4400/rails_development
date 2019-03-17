@@ -16,8 +16,6 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
     find_or_create_by(provider: auth['provider'], uid: auth['uid']) do |user|
-      logger.debug("auth==============")
-      logger.debug(auth)
       user.provider = auth['provider']
       user.uid = auth['uid']
       user.name = auth['info']['name']
