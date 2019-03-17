@@ -16,11 +16,13 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
     find_or_create_by(provider: auth['provider'], uid: auth['uid']) do |user|
+      logger.debug("auth==============")
+      logger.debug(auth)
       user.provider = auth['provider']
       user.uid = auth['uid']
       user.name = auth['info']['name']
       user.nandeda_id = auth['info']['nickname']
-      user.email = User.dummy_email(auth)
+      user.email = auth['info']['email']
       user.consumer_key = auth.extra.access_token.consumer.key
       user.consumer_secret = auth.extra.access_token.consumer.secret
       user.access_token = auth['credentials']['token']
@@ -47,12 +49,6 @@ class User < ApplicationRecord
     else
       super
     end
-  end
-
-  private
-
-  def self.dummy_email(auth)
-    "#{auth['uid']}-#{auth['provider']}@example.com"
   end
 
   protected

@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[email password password_confirmation current_password name nandeda_id profile image image_cache])
-    devise_parameter_sanitizer.permit(:account_update, keys: %i[email password password_confirmation current_password name nandeda_id profile image image_cache])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[email password password_confirmation current_password name nandeda_id profile image image_cache notification_allowed])
   end
 
   protected
@@ -33,5 +33,6 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:username])
     devise_parameter_sanitizer.permit(:account_update, keys: [:image])
     devise_parameter_sanitizer.permit(:account_update, keys: [:profile])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:notification_allowed])
   end
 end
