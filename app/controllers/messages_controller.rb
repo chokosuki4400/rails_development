@@ -29,6 +29,17 @@ class MessagesController < ApplicationController
     @user = User.find_by(nandeda_id: params[:user_nandeda_id])
     # @message = Message.readable_for(@user).find(params[:id])
     @message = Message.find_by(url_token: params[:url_token])
+    logger.debug("get mail===")
+    logger.debug(@user.email)
+    logger.debug(@user.inspect)
+    logger.debug("@message===")
+    logger.debug(@message.url_token)
+    logger.debug(@message.message_text)
+    logger.debug(@message.inspect)
+    logger.debug("メール送信")
+    page_url = url_for(only_path: false)
+    logger.debug(page_url)
+    # MessagesHelper.send(@user.email, @user.name, page_url)
   end
 
   # 新規登録フォーム
@@ -62,6 +73,8 @@ class MessagesController < ApplicationController
     make_picture(next_id)
 
     if @message.save
+      logger.debug("メール送信")
+      MessagesHelper.send(@user.email, @message.author.name, @message.url_token, url_for(only_path: false))
       redirect_to controller: :messages, action: :index, notice: '作成しました。'
     else
       render 'new'
