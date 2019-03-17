@@ -2,7 +2,12 @@
 
 <%if user_signed_in? %>
 <div class="p-profile">
+	<% if current_user.image? %>
 	<div class="c-img--circle" style="background-image: url(<%= current_user.image %>)"></div>
+	<% else %>
+	<div class="c-img--circle" style="background-image: url(<%= asset_path 'user.png' %>"></div>
+	<% end %>
+
 	<ul class="c-list">
 		<li class="c-list__item"><%=current_user.name%></li>
 		<li class="c-list__item"><%=current_user.profile%></li>
