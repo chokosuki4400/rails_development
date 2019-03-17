@@ -31,6 +31,16 @@
 
   <dt>アイコン</dt>
   <dd><%= f.file_field :image %></dd>
+
+  <div class="c-switch">
+    <%= f.label :notification_allowed, class: "c-switch__lable" do %>
+    <%= f.check_box :notification_allowed, :as => :boolean, class: "c-switch__input" %>
+    <span class="c-switch__content"></span>
+    <span class="c-switch__circle"></span>
+    <% end %>
+    <p class="c-switch__text">メール通知（質問を受け取った時メールでお知らせします）</p>
+  </div>
+
 </dl>
 
 <div class="c-btn--accent">

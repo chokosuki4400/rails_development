@@ -55,4 +55,20 @@ Unknown database 'app_name_development'が表示された場合はデータベ�
 $ docker-compose run web rake db:create
 ```
 
+# マイグレーション
+
+# カラム追加
+
+```
+$ rails g migration クラス名 カラム名:データ型( カラム名:データ型)
+$ rails g migration AddUser notification_flag:boolean author:string
+```
+
+# データ型の変更
+
+```
+$ rails g migration change_datatype_カラム名 _ of _ テーブル名
+$ rails g migration change_datatype_notification_allowed_of_user
+```
+
 * ...
