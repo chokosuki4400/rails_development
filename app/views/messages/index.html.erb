@@ -22,6 +22,7 @@
 			<% end %>
 			<p class="c-message__item__title"><%= message.message_text %></p>
 			<p class="c-message__item__btn"><i class="fas fa-caret-right"></i> もっとみる</p>
+			 いいね数：<%= message.liked_users.count %>
 			<% end %>
 		</li>
 		<% end %>
