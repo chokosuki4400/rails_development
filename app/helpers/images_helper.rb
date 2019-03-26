@@ -16,8 +16,6 @@ module ImagesHelper
     def build(text)
       text = prepare_text(text)
       @image = MiniMagick::Image.open(BASE_IMAGE_PATH)
-      Rails.logger.debug("@image.path build==============")
-      Rails.logger.debug(@image.path)
       configuration(text)
     end
 
@@ -25,9 +23,6 @@ module ImagesHelper
     def write(text)
       build(text)
       @image.write uniq_file_name
-      Rails.logger.debug("@image.path write==============")
-      Rails.logger.debug(@image.path)
-      Rails.logger.debug(uniq_file_name)
     end
 
     private

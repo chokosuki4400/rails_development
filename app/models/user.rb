@@ -6,6 +6,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable, omniauth_providers: [:twitter]
   has_many :messages, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_messages, through: :likes, source: :message
+
   mount_uploader :image, ImageUploader
   attr_encrypted :consumer_key, key: 'This is a key that is 256 bits!!'
   attr_encrypted :consumer_secret, key: 'This is a key that is 256 bits!!'
@@ -13,6 +16,10 @@ class User < ApplicationRecord
   attr_encrypted :access_token_secret, key: 'This is a key that is 256 bits!!'
 
   # accepts_nested_attributes_for :question, update_only: true
+
+  def already_liked?(message)
+    self.likes.exists?(message_id: message.id)
+  end
 
   def self.from_omniauth(auth)
     find_or_create_by(provider: auth['provider'], uid: auth['uid']) do |user|

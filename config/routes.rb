@@ -31,10 +31,10 @@ Rails.application.routes.draw do
     # collection { get "voted" }
     # collection { get "search" }
     # resources :messages, only: [:index,:show]
-    resources :messages, param: :url_token
+    resources :messages, param: :url_token do
+      resources :likes, only: [:create, :destroy]
+    end
   end
-
-  # resources :messages
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

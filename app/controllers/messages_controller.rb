@@ -29,6 +29,7 @@ class MessagesController < ApplicationController
     @user = User.find_by(nandeda_id: params[:user_nandeda_id])
     # @message = Message.readable_for(@user).find(params[:id])
     @message = Message.find_by(url_token: params[:url_token])
+    @like = Like.new
   end
 
   # 新規登録フォーム

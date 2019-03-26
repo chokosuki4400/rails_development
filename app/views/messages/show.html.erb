@@ -19,6 +19,16 @@
 	</div>
 </div>
 
+<% if current_user.already_liked?(@message) %>
+  <%= button_to 'いいねを取り消す', user_message_like_path(@user.nandeda_id,  @message.id, @message.likes), method: :delete %>
+<% else %>
+  <%= button_to 'いいね', user_message_likes_path(@user.nandeda_id,  @message.id) %>
+<% end %>
+<h2>いいねしたユーザー</h2>
+<% @message.liked_users.each do |user| %>
+  <li><%= user.nandeda_id %></li>
+<% end %>
+
 <% if current_user == @message.author %>
 	<div class="c-btn--accent u-mt25">
 		<%= link_to "回答する", edit_user_message_path(@user.nandeda_id, @message), data: {"turbolinks"=>false} %>
